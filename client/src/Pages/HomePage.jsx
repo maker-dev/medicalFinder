@@ -1,8 +1,9 @@
 import React from 'react'
+import HeroSection from '../Components/homepage/HeroSection';
 
 function HomePage() {
   return (
-    <div>HomePage</div>
+    <HeroSection />
   )
 }
 
