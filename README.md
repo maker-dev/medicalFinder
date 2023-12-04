@@ -20,7 +20,7 @@ Medical Finder is a web platform designed to simplify the process of finding ess
 1. Clone the repository:
 
 ```bash
-git clone [your repository URL]
+git clone <https://github.com/maker-dev/medicalFinder>
 ```
 
 ## Features
