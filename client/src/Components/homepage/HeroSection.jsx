@@ -45,7 +45,7 @@ function HeroSection() {
               className='w-full py-3 pl-12 pr-4 text-gray-700 border rounded-md outline-none bg-white focus:bg-white focus:border-main-400'
             />
           </div>
-          <button className="bg-main-400 hover:bg-main-500 active:bg-main-600 w-16 h-11 flex items-center justify-center rounded-md"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></button>
+          <button className="bg-main-400 hover:bg-main-500 active:bg-main-600 w-16 h-11 flex items-center justify-center rounded-md"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></button>
         </div>
         </form>
         <div>

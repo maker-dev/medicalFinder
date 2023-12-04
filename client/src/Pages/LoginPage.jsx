@@ -3,7 +3,10 @@ import Navbar from "../Components/ui/Navbar";
 
 function LoginPage() {
   return (
-    <div>LoginPage</div>
+    <>
+      <Navbar />
+      <div>LoginPage</div>
+    </>
   )
 }
 
