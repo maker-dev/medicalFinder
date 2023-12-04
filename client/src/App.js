@@ -1,12 +1,25 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import HomePage from "./Pages/HomePage";
-
+import LogInPage from "./Pages/LoginPage";
+import SignUpPage  from "./Pages/SignUpPage";
+import ListProductPage from "./Pages/ListProductPage";
+import PharmacyPage from "./Pages/PharmacyPage";
 
 function App() {
   return (
-    <div className="bg-gray-50">
-      <HomePage />
-    </div>
+    <BrowserRouter>
+      <Routes>
+          <Route exact path='/home' element={<HomePage />}/>
+          <Route exact path='/' element={<HomePage />}/>
+          <Route path="/login" element={<LogInPage />} />
+          <Route path="/register" element={<SignUpPage />} />
+          <Route path="/products" element={<ListProductPage />} />
+          <Route path="/pharmacies" element={<PharmacyPage/>} />
+          {/* <Route path="/product/:id" element={<ProductPage product={product} />} /> */}
+      </Routes>
+    </BrowserRouter>
+
   );
 }
 

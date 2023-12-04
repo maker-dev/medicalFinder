@@ -1,10 +1,10 @@
 import React from 'react'
+import Navbar from "../Components/ui/Navbar";
 
 function SignUpPage() {
   return (
-    <div>
-      
-    </div>
+    <Navbar />
+    <div>SignUpPage</div>
   )
 }
 

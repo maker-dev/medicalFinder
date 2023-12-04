@@ -9,7 +9,7 @@ function HeroSection() {
     >
       <div className="flex-1 flex flex-col  md:w-1/2 justify-center items-center gap-3">
         <img className="mx-auto" src={pillImage} alt="Pill" />
-        <div className="text-center font-mina_bold text-5xl">
+        <div className="text-center font-mina_bold text-4xl md:text-5xl">
           Time-saving medicament discovery at your fingertips.
         </div>
         <div className="text-center text-2xl">
