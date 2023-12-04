@@ -5,7 +5,7 @@ function CategoriesSection() {
     <div className='bg-white '>
         <div>
             <div>Featured Categories</div>
-            <div className='w-1/2'>Explore our curated collection of featured categories, each tailored to meet your specific health needs.</div>
+            <div className=''>Explore our curated collection of featured categories, each tailored to meet your specific health needs.</div>
         </div>
     </div>
   )

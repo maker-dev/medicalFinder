@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import logo from '../../Assets/Icons/Logo.svg'
+import { Link } from 'react-router-dom';
 
 function Navbar() {
 
@@ -14,14 +15,14 @@ function Navbar() {
     <nav className="border-b w-full md:static md:text-sm md:border-none">
         <div className="items-center px-4 max-w-screen-xl mx-auto md:flex md:px-8">
                 <div className="flex items-center justify-between py-3 md:py-5 md:block">
-                    <a href="/">
+                    <Link to="/">
                         <img
                             src={logo}
                             width={200}
                             height={75}
                             alt="Medical Finder logo"
                         />
-                    </a>
+                    </Link>
                     <div className="md:hidden">
                         <button className="text-black hover:text-main-400"
                             onClick={() => setState(!state)}
@@ -46,9 +47,9 @@ function Navbar() {
                             navigation.map((item, idx) => {
                                 return (
                                     <li key={idx} className="text-gray-700 hover:text-main-400">
-                                        <a href={item.path} className="block">
+                                        <Link to={item.path} className="block">
                                             {item.title}
-                                        </a>
+                                        </Link>
                                     </li>
                                 )
                             })
