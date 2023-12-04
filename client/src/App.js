@@ -1,12 +1,9 @@
-import logo from './logo.svg';
-import './App.css';
-import Navbar from './Components/ui/Navbar';
-import HomePage from './Pages/HomePage';
+import "./App.css";
+import HomePage from "./Pages/HomePage";
 
 function App() {
   return (
-    <div className="App">
-      <Navbar />
+    <div className="bg-gray-50">
       <HomePage />
     </div>
   );

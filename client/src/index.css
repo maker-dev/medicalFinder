@@ -1,16 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+  font-family: 'Mina';
+  src: url("./Assets/Fonts/Mina-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'MinaBold';
+  src: url("./Assets/Fonts/Mina-Bold.ttf") format("truetype");
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@layer base {
+  * {
+    font-family: "Mina";
+    color: #1e1e1e;
+  }
 }

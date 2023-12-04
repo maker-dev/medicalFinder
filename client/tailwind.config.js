@@ -18,10 +18,10 @@ module.exports = {
           950: "#382810",
         },   
       },
-      backgroundImage: {
-        'bg-image': "url('/src/Assets/bg.svg')",
-        'footer-texture': "url('/img/footer-texture.png')",
-      }
+      fontFamily:{
+        mina : 'Mina',
+        mina_bold :  'MinaBold',
+      },
     },
   },
   plugins: [],
