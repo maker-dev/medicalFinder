@@ -43,7 +43,9 @@ function SignUpPage() {
               />
             </div>
             <div className="mb-4">
-              <Password name="createpassword" placeholder="Create Password*" />
+              <Password 
+              name="createpassword" 
+              placeholder="Create Password*" />
             </div>
 
             <div className="mb-4">
