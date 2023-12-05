@@ -12,7 +12,7 @@ function Navbar() {
         { title: "Products", path: "/products" }
     ];
   return (
-    <nav className="border-b w-full md:static md:text-sm md:border-none">
+    <nav className="border-b w-full  md:static md:text-sm md:border-none">
         <div className="items-center px-4 max-w-screen-xl mx-auto md:flex md:px-8">
                 <div className="flex items-center justify-between py-3 md:py-5 md:block">
                     <Link to="/">
@@ -57,14 +57,14 @@ function Navbar() {
                         <span className='hidden w-px h-6 bg-gray-300 md:block'></span>
                         <div className='space-y-3 items-center gap-x-6 md:flex md:space-y-0'>
                             <li>
-                                <a href="/login" className="block py-3 text-center text-gray-700 hover:text-main-400 border rounded-lg md:border-none">
+                                <Link to={"/login"} className='block py-3 text-center text-gray-700 hover:text-main-400 border rounded-lg md:border-none'>
                                     Log in
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="/register" className="block py-3 px-4 font-medium text-center text-white bg-gray-900 hover:bg-main-400 active:bg-main-400 active:shadow-none rounded-lg shadow md:inline">
+                                <Link to={"/register"} className='block py-3 px-4 font-medium text-center text-white bg-gray-900 hover:bg-main-400 active:bg-main-400 active:shadow-none rounded-lg shadow md:inline'>
                                     Sign Up
-                                </a>
+                                </Link>
                             </li>
                         </div>
                     </ul>

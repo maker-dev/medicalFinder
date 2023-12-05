@@ -2,7 +2,7 @@ export default function Text(props){
     const {type, placeholder, name, size}  = props;
 
     return(
-        <div className={'relative w-'+size+' container mx-auto mt-2'} >
+        <div className={'relative lg:w-'+size+' w-full container mx-auto mt-2'} >
                 <input
               type={type}
               placeholder={placeholder}

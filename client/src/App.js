@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import HomePage from "./Pages/HomePage";
 import LoginPage from "./Pages/LoginPage";
 import SignUpPage from "./Pages/SignUpPage";
@@ -11,8 +11,8 @@ function App() {
     <div className="bg-gray-50">
       <BrowserRouter>
         <Routes>
-          <Route exact path="/home" element={<HomePage />} />
-          <Route exact path="/" element={<HomePage />} />
+          <Route exact path="/" element={<Navigate to={"/home"} />}  />
+          <Route exact path="/home" element={<HomePage />}/>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<SignUpPage />} />
           <Route path="/products" element={<ListProductPage />} />
