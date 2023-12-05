@@ -12,7 +12,7 @@ function Navbar() {
         { title: "Products", path: "/products" }
     ];
   return (
-    <nav className="border-b w-full md:static md:text-sm md:border-none">
+    <nav className="border-b w-full  md:static md:text-sm md:border-none">
         <div className="items-center px-4 max-w-screen-xl mx-auto md:flex md:px-8">
                 <div className="flex items-center justify-between py-3 md:py-5 md:block">
                     <Link to="/">
