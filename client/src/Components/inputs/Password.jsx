@@ -1,21 +1,21 @@
 import { useState } from "react";
 
-export default function PasswordInput() {
+export default function PasswordInput(props) {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-
+  const {placeholder} = props; 
   function togglePasswordVisibility() {
     setIsPasswordVisible((prevState) => !prevState);
   }
 
   return (
-    <div className="relative w-1/4 container mx-auto mt-2">
+    <div className="relative w-full container mx-auto mt-2">
       <input
         type={isPasswordVisible ? "text" : "password"}
-        placeholder="Password"
+        placeholder={placeholder}
         className="w-full
         py-3 pl-12 pr-4 text-gray-700 border rounded-md outline-none bg-white focus:bg-white focus:border-main-400"
       />
-      <button
+      <button type="button"
         className="absolute inset-y-0 right-0 flex items-center px-4 text-gray-600"
         onClick={togglePasswordVisibility}
       >
