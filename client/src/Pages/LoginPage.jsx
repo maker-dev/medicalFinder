@@ -1,13 +1,13 @@
 import React from 'react'
 import Navbar from "../Components/ui/Navbar";
 
-function ProductPage() {
+function LoginPage() {
   return (
     <>
-    <Navbar />
-    <div>ProductPage</div>
+      <Navbar />
+      <div>LoginPage</div>
     </>
   )
 }
 
-export default ProductPage
+export default LoginPage
