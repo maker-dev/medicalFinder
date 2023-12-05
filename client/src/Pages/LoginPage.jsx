@@ -30,7 +30,7 @@ function LoginPage() {
             </div>
             
     <div className="mb-4 flex items-center">
-        <a href="#" class="text-main-400 hover:underline">terms and conditions</a>
+        <a href="#" class="text-main-400 hover:underline">Forgot password?</a>
     </div>
     <div className="flex items-center justify-between">
       <Button text="Login"></Button>
