@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('pharmacies', function (Blueprint $table) {
             $table->id();
-            $table->string('fullName');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->enum('type',['client','pharmacie']);
-            $table->rememberToken();
+            $table->string('namePharmacie');
+            $table->string('tel');
+            $table->string('address');
+            $table->boolean('verifiedPharmacie')->default(false);
+            $table->string('city');
+            $table->boolean('permanence');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('pharmacies');
     }
 };

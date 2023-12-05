@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('gestion_medicines', function (Blueprint $table) {
             $table->id();
-            $table->string('fullName');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->enum('type',['client','pharmacie']);
-            $table->rememberToken();
+            $table->unsignedBigInteger('idPharmacie');
+            $table->foreign('idPharmacie')->references('id')->on('pharmacies')
+            ->onDelete('cascade')->onUpdate('cascade');
+            $table->bigInteger('quantiteProduit');
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('gestion_medicines');
     }
 };
