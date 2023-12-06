@@ -12,7 +12,7 @@ function SignUpPage() {
 
       <Navbar />
       <div className="h-full my-10 flex items-center">
-        <div class="w-full max-w-md mx-auto">
+        <div className  ="w-full max-w-md mx-auto">
           <form className="bg-white shadow-md rounded-md px-8 pt-6 pb-8 ">
             <h1 className="text-center font-black text-4xl">Sign Up</h1>
             <h2 className="text-center  text-xl mt-2 mb-4">Hi There !</h2>
@@ -63,12 +63,12 @@ function SignUpPage() {
     <h1 className="mr-4">Are you a ? </h1> 
     <div className="flex items-center me-4">
         <input id="pharmacy-radio" type="radio" value="Pharmacy" name="user-radio-group" className="w-4 h-4 text-main-400 bg-gray-100 border-gray-300 focus:ring-main-400 dark:focus:ring-main-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-main-400 dark:border-main-400"/>
-        <label for="pharmacy-radio" className="ms-2 text-sm font-medium ">Pharmacy</label>
+        <label htmlFor="pharmacy-radio" className="ms-2 text-sm font-medium ">Pharmacy</label>
     </div>
     <p className="mr-4">Or</p>
     <div className="flex items-center me-4">
         <input id="client-radio" type="radio" value="Guest" name="user-radio-group" className="w-4 h-4 text-main-400 bg-gray-100 border-gray-300 focus:ring-main-400 dark:focus:ring-main-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-main-400 dark:border-main-400"/>
-        <label for="client-radio" className="ms-2 text-sm font-medium ">Guest</label>
+        <label htmlFor="client-radio" className="ms-2 text-sm font-medium ">Guest</label>
     </div>
 </div>
 

@@ -1,9 +1,7 @@
 import aIcons from "../../Assets/Icons";
 export default function PharmacyCard(props){
   const {imgUrl} = props; 
-    return(
-        <>
-   
+    return (
   <div id="card" className=" w-full ">
 
     <div className=" w-full flex flex-col">
@@ -21,19 +19,35 @@ export default function PharmacyCard(props){
                 <p className="font-semibold text-sm text-slate-500 leading-tight truncate">Healthy Haven Pharmacy</p>
                 <p className="font-bold text-sm leading-tight truncate">Healthy Haven Pharmacy</p>
             </div>
-          
-          <p className="text-sm lg:mb-20 my-6">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, reiciendis molestiae aut nam, qui quibusdam similique animi sint aliquam temporibus ipsam natus a tenetur magnam eos ullam iure consectetur suscipit.
-          </p>
-        
+
+            <div className="w-full py-4 px-6 text-gray-800 flex flex-col justify-around  mt-2">
+              <div className="flex flex-col space-y-4 ">
+                <p className="font-bold text-lg leading-tight truncate">
+                  Healthy Haven Pharmacy
+                </p>
+                <p className="font-semibold text-sm text-slate-500 leading-tight truncate">
+                  Healthy Haven Pharmacy
+                </p>
+                <p className="font-semibold text-sm text-slate-500 leading-tight truncate">
+                  Healthy Haven Pharmacy
+                </p>
+                <p className="font-bold text-sm leading-tight truncate">
+                  Healthy Haven Pharmacy
+                </p>
+              </div>
+
+              <p className="text-sm lg:mb-20 my-6">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga,
+                reiciendis molestiae aut nam, qui quibusdam similique animi sint
+                aliquam temporibus ipsam natus a tenetur magnam eos ullam iure
+                consectetur suscipit.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-        
-  </>
-    );
-    
-    
-
+      </div>
+  
+  );
 }
+

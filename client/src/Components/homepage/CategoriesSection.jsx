@@ -1,35 +1,12 @@
 import React from "react";
-import aIcons from "../../Assets/Icons";
-import CategorieCard from "../ui/CategorieCard";
-import ProductCard from "../ui/ProductCard";
 
+import CategorieCard from "../cards/CategorieCard";
+import ProductCard from "../cards/ProductCard";
+import { categories, products } from "../../data/data";
 
 function CategoriesSection() {
-  const categories = [
-    { name: "Pain Relief", imgUrl: aIcons.painIc },
-    { name: "Cold and Flu Remedies", imgUrl: aIcons.winterIc },
-    { name: "First Aid Essentials", imgUrl: aIcons.aidIc },
-    { name: "Allergy Relief", imgUrl: aIcons.shieldIc },
-    { name: "Skin Care", imgUrl: aIcons.cleanIc },
-    { name: "Vitamins and Supplements", imgUrl: aIcons.pillsIc },
-  ];
-  const products = [
-    {
-      new: true,
-      title: "Aspirin",
-      imgUrl: aIcons.prodIc_1,
-      description:
-        "Used for pain relief, fever reduction, and anti-inflammatory purposes.",
-    },
-    {
-      new: false,
-      title: "Acetaminophen (Tylenol)",
-      imgUrl: aIcons.prodIc_2,
-      description: "Commonly used for pain relief and reducing fever.",
-    },
-  ];
   return (
-    <div className="bg-white flex flex-col items-center h-screen">
+    <div className="bg-white flex flex-col items-center h-full">
       <div className="p-10 flex flex-col items-center">
         <div className="font-mina_bold text-3xl">Featured Categories</div>
         <div className="text-center">
@@ -37,7 +14,7 @@ function CategoriesSection() {
           to meet your specific health needs.
         </div>
       </div>
-      <div className=" grid grid-cols-3 gap-2 md:flex md:gap-5 ">
+      <div className="flex flex-wrap gap-6 items-center justify-center p-7">
         {categories.map((category, index) => {
           return <CategorieCard key={index} category={category} />;
         })}
@@ -49,11 +26,12 @@ function CategoriesSection() {
           sought-after medicaments that have earned the trust of our community.
         </div>
       </div>
-      <div>
+      <div className="flex flex-wrap gap-2 md:gap-5 justify-center items-center">
         {products.map((product, index) => {
           return <ProductCard key={index} product={product}/>;
         })}
       </div>
+      <div className="p-10"></div>
     </div>
   );
 }
