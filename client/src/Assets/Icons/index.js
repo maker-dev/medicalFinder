@@ -8,9 +8,11 @@ import cleanIc from "./Clean Hands.svg";
 import aidIc from "./Hearing Aid.svg";
 import prodIc_1 from './prod1.svg'
 import prodIc_2 from './prod2.svg'
+import phaIcDefault from './PharmacyImg.svg'
 //the importation here
 const aIcons = {
   // ecoIcon:ecoIcon,
+  phaIcDefault : phaIcDefault,
   logoIcon: logoIcon,
   painIc: painIc,
   shieldIc: shieldIc,

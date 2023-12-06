@@ -7,7 +7,7 @@ function PharmacyPage() {
     <>
     <Navbar />
    
-    <PharmacyCard/>
+    <PharmacyCard imgUrl={null}/>
     </>
     
   )

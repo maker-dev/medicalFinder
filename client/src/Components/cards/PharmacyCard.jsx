@@ -1,4 +1,6 @@
-export default function PharmacyCard(){
+import aIcons from "../../Assets/Icons";
+export default function PharmacyCard(props){
+  const {imgUrl} = props; 
     return(
         <>
    
@@ -8,8 +10,8 @@ export default function PharmacyCard(){
       <div  className="flex flex-col md:flex-row overflow-hidden
                                         bg-white rounded-lg shadow-xl   ">
         
-        <div className=" lg:w-1/2 m-6 ">
-          <img className="inset-0 h-full w-full object-cover object-center" src="https://www.signalisation.ma/pub/media/catalog/product/cache/e4d64343b1bc593f1c5348fe05efa4a6/p/h/pharmacie_plaque.png" />
+        <div className=" md:w-1/2 m-6 ">
+          <img className="inset-0 h-full w-full object-cover object-center" src={imgUrl === null ? aIcons.phaIcDefault : imgUrl} />
         </div>
         
         <div className="w-full py-4 px-6 text-gray-800 flex flex-col justify-around  mt-2">
