@@ -1,13 +1,16 @@
 import React from "react";
 import HeroSection from "../Components/homepage/HeroSection";
-import Navbar from "../Components/ui/Navbar";
 import Footer from "../Components/Footer";
+import CategoriesSection from "../Components/homepage/CategoriesSection";
+import Header from "../Components/Header";
+
 
 function HomePage() {
   return (
     <>
-      <Navbar />
+      <Header />
       <HeroSection />
+      <CategoriesSection />
       <Footer />
     </>
   );

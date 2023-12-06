@@ -10,9 +10,9 @@ function SignUpPage() {
     <>
 
       <Navbar />
-      <div className="h-screen flex items-center my-20">
-        <div className="w-full max-w-md mx-auto">
-          <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 ">
+      <div className="h-screen flex items-center">
+        <div class="w-full max-w-md mx-auto">
+          <form className="bg-white shadow-md rounded-md px-8 pt-6 pb-8 ">
             <h1 className="text-center font-black text-4xl">Sign Up</h1>
             <h2 className="text-center  text-xl mt-2 mb-4">Hi There !</h2>
             <div className="md:flex  md:space-x-2 block space-x-0">
