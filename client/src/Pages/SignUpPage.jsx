@@ -4,13 +4,14 @@ import Text from "../Components/inputs/Text";
 import Button from "../Components/inputs/Button";
 import Password from "../Components/inputs/Password";
 import Footer from "../Components/Footer";
+import { Link } from "react-router-dom";
 
 function SignUpPage() {
   return (
     <>
 
       <Navbar />
-      <div className="h-screen flex items-center">
+      <div className="h-screen flex items-center my-14">
         <div class="w-full max-w-md mx-auto">
           <form className="bg-white shadow-md rounded-md px-8 pt-6 pb-8 ">
             <h1 className="text-center font-black text-4xl">Sign Up</h1>
@@ -124,7 +125,7 @@ function SignUpPage() {
 </button>
 </div>
     </div>
-    <h2 className="ms-2 text-sm text-center ">Already a member ? <a href="#" className="text-main-400 hover:underline">Log in</a>.</h2>
+    <h2 className="ms-2 text-sm text-center ">Already a member ? <Link to="/login" className="text-main-400 hover:underline">Log in</Link>.</h2>
 
   </form>
         </div>
