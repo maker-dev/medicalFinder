@@ -1,7 +1,7 @@
 import React from "react";
 import aIcons from "../../Assets/Icons";
-import CategorieCard from "../ui/CategorieCard";
-import ProductCard from "../ui/ProductCard";
+import CategorieCard from "../cards/CategorieCard";
+import ProductCard from "../cards/ProductCard";
 
 
 function CategoriesSection() {
@@ -29,7 +29,7 @@ function CategoriesSection() {
     },
   ];
   return (
-    <div className="bg-white flex flex-col items-center h-screen">
+    <div className="bg-white flex flex-col items-center h-full">
       <div className="p-10 flex flex-col items-center">
         <div className="font-mina_bold text-3xl">Featured Categories</div>
         <div className="text-center">
@@ -49,11 +49,12 @@ function CategoriesSection() {
           sought-after medicaments that have earned the trust of our community.
         </div>
       </div>
-      <div>
+      <div className="flex flex-wrap gap-2 md:gap-5">
         {products.map((product, index) => {
           return <ProductCard key={index} product={product}/>;
         })}
       </div>
+      <div className="p-10"></div>
     </div>
   );
 }
