@@ -16,10 +16,10 @@ return new class extends Migration
             $table->unsignedBigInteger('client_id');
             $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade')
             ->onUpdate('cascade');
+            $table->unsignedBigInteger('pharmacy_id');
+            $table->foreign('pharmacy_id')->references('id')->on('pharmacies')->onDelete('cascade')->onUpdate('cascade');
             $table->double('rating');
-            $table->unsignedBigInteger('pharmacie_id');
-            $table->foreign('pharmacie_id')->references('id')->on('pharmacies')->onDelete('cascade')->onUpdate('cascade');
-            $table->longText('comment');
+            $table->text('comment');
             $table->timestamps();
         });
     }

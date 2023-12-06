@@ -14,16 +14,10 @@ return new class extends Migration
         Schema::create('medicines', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->double('price')->unsigned()->default(0);
-           
-            $table->unsignedBigInteger('client_id');
-            $table->foreign('client_id')->references('id')
-            ->on('clients')->onDelete('cascade')->onUpdate('cascade');
-            $table->longText('description');
-            $table->string('image');
-            $table->string('category');
-            
-
+            $table->text("description");
+            $table->string("image");
+            $table->string("category");
+            $table->boolean("forAdult");
             $table->timestamps();
         });
     }
