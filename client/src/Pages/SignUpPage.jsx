@@ -58,6 +58,20 @@ function SignUpPage() {
               <p className="mt-2">Password must be at least 8 characters long.</p>
             </div>
             
+<div class="flex mb-4">
+    <h1 className="mr-4">Are you a ? </h1> 
+    <div class="flex items-center me-4">
+        <input id="pharmacy-radio" type="radio" value="Pharmacy" name="user-radio-group" class="w-4 h-4 text-main-400 bg-gray-100 border-gray-300 focus:ring-main-400 dark:focus:ring-main-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-main-400 dark:border-main-400"/>
+        <label for="pharmacy-radio" className="ms-2 text-sm font-medium ">Pharmacy</label>
+    </div>
+    <p className="mr-4">Or</p>
+    <div class="flex items-center me-4">
+        <input id="client-radio" type="radio" value="Guest" name="user-radio-group" class="w-4 h-4 text-main-400 bg-gray-100 border-gray-300 focus:ring-main-400 dark:focus:ring-main-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-main-400 dark:border-main-400"/>
+        <label for="client-radio" className="ms-2 text-sm font-medium ">Guest</label>
+    </div>
+</div>
+
+            
     <div className="mb-4 flex items-center">
     <input id="link-checkbox" type="checkbox" value="" className="w-4 h-4 text-main-400 bg-gray-100  rounded focus:ring-main-400 dark:focus:ring-main-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-main-600"/>
     <label htmlFor="link-checkbox" className="ms-2 text-sm ">I agree with the <a href="#" className="text-main-400 hover:underline">terms and conditions</a>.</label>

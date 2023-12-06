@@ -1,13 +1,13 @@
 import React from 'react'
 import Navbar from '../Components/ui/Navbar';
-import Pharmacie  from '../Components/cards/Pharmacie';
+import PharmacyCard  from '../Components/cards/PharmacyCard';
 
 function PharmacyPage() {
   return (
     <>
     <Navbar />
    
-    <Pharmacie/>
+    <PharmacyCard/>
     </>
     
   )

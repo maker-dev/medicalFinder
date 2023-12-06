@@ -1,4 +1,4 @@
-export default function Pharmacie(){
+export default function PharmacyCard(){
     return(
         <>
    
