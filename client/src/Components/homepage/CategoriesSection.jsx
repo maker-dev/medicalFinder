@@ -1,33 +1,10 @@
 import React from "react";
-import aIcons from "../../Assets/Icons";
+
 import CategorieCard from "../cards/CategorieCard";
 import ProductCard from "../cards/ProductCard";
-
+import { categories, products } from "../../data/data";
 
 function CategoriesSection() {
-  const categories = [
-    { name: "Pain Relief", imgUrl: aIcons.painIc },
-    { name: "Cold and Flu Remedies", imgUrl: aIcons.winterIc },
-    { name: "First Aid Essentials", imgUrl: aIcons.aidIc },
-    { name: "Allergy Relief", imgUrl: aIcons.shieldIc },
-    { name: "Skin Care", imgUrl: aIcons.cleanIc },
-    { name: "Vitamins and Supplements", imgUrl: aIcons.pillsIc },
-  ];
-  const products = [
-    {
-      new: true,
-      title: "Aspirin",
-      imgUrl: aIcons.prodIc_1,
-      description:
-        "Used for pain relief, fever reduction, and anti-inflammatory purposes.",
-    },
-    {
-      new: false,
-      title: "Acetaminophen (Tylenol)",
-      imgUrl: aIcons.prodIc_2,
-      description: "Commonly used for pain relief and reducing fever.",
-    },
-  ];
   return (
     <div className="bg-white flex flex-col items-center h-full">
       <div className="p-10 flex flex-col items-center">
