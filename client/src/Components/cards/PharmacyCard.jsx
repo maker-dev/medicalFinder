@@ -9,7 +9,7 @@ export default function PharmacyCard(props){
                                         bg-white rounded-lg shadow-xl   ">
         
         <div className=" md:w-1/2 m-6 ">
-          <img className="inset-0 h-full w-full object-cover object-center" src={imgUrl === null ? aIcons.phaIcDefault : imgUrl} alt="pharamcy"/>
+          <img className="inset-0 h-full w-full object-cover object-center" src={imgUrl === null ? aIcons.phaIcDefault : imgUrl} alt="pharamcy img"/>
         </div>
         
         <div className="w-full py-4 px-6 text-gray-800 flex flex-col justify-around  mt-2">
