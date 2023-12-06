@@ -1,15 +1,19 @@
 import React from "react";
-
+import bell_off from '../../Assets/Icons/bell_off.svg';
+import bell_on from '../../Assets/Icons/bell_on.svg';
 
 function ProductCard({ product }) {
   return (
     <>
-    <div className="mb-5"></div>
-  <div className="max-w-sm rounded overflow-hidden shadow-lg p-7">
-    <div>
-      {product.new ? <span className=" mx-4 bg-main-400 rounded-lg text-white px-4 py-1 relative top-4">New</span> 
+  <div className="max-w-sm rounded-md overflow-hidden shadow-lg p-5">
+    <div className="flex justify-between items-center">
+      {product.new ? <div className="bg-main-400 rounded-lg text-white px-4 py-2 w-fit">New</div> 
       :
-      <span className="text-white px-4 py-2 relative top-4"></span>}
+      <div className="text-white px-4 py-2"></div>}
+      {
+        product.bell ? <img src={bell_on} alt="product image" className="w-8 cursor-pointer" />
+        :  <img src={bell_off} alt="product image" className="w-8 cursor-pointer" />
+      }
     </div>
     <div className="flex justify-center p-4">
       <img className="w-2/3" src={product.imgUrl} alt="Sunset in the mountains" />

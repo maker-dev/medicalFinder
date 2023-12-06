@@ -5,6 +5,34 @@ import ProductCard from "../cards/ProductCard";
 import { categories, products } from "../../data/data";
 
 function CategoriesSection() {
+<<<<<<< Updated upstream
+=======
+  const categories = [
+    { name: "Pain Relief", imgUrl: aIcons.painIc },
+    { name: "Cold and Flu Remedies", imgUrl: aIcons.winterIc },
+    { name: "First Aid Essentials", imgUrl: aIcons.aidIc },
+    { name: "Allergy Relief", imgUrl: aIcons.shieldIc },
+    { name: "Skin Care", imgUrl: aIcons.cleanIc },
+    { name: "Vitamins and Supplements", imgUrl: aIcons.pillsIc },
+  ];
+  const products = [
+    {
+      new: true,
+      bell: true,
+      title: "Aspirin",
+      imgUrl: aIcons.prodIc_1,
+      description:
+        "Used for pain relief, fever reduction, and anti-inflammatory purposes.",
+    },
+    {
+      new: false,
+      bell: false,
+      title: "Acetaminophen (Tylenol)",
+      imgUrl: aIcons.prodIc_2,
+      description: "Commonly used for pain relief and reducing fever.",
+    },
+  ];
+>>>>>>> Stashed changes
   return (
     <div className="bg-white flex flex-col items-center h-full">
       <div className="p-10 flex flex-col items-center">
@@ -26,7 +54,7 @@ function CategoriesSection() {
           sought-after medicaments that have earned the trust of our community.
         </div>
       </div>
-      <div className="flex flex-wrap gap-2 md:gap-5">
+      <div className="flex flex-wrap gap-2 md:gap-5 justify-center">
         {products.map((product, index) => {
           return <ProductCard key={index} product={product}/>;
         })}
