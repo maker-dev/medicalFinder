@@ -59,16 +59,16 @@ function SignUpPage() {
               <p className="mt-2">Password must be at least 8 characters long.</p>
             </div>
             
-<div className="flex mb-4">
+<div className="flex mb-4 flex-col sm:flex-row">
     <h1 className="mr-4">Are you a ? </h1> 
-    <div className="flex items-center me-4">
+    <div className="flex items-center me-4 ms-4">
         <input id="pharmacy-radio" type="radio" value="Pharmacy" name="user-radio-group" className="w-4 h-4 text-main-400 bg-gray-100 border-gray-300 focus:ring-main-400 dark:focus:ring-main-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-main-400 dark:border-main-400"/>
         <label htmlFor="pharmacy-radio" className="ms-2 text-sm font-medium ">Pharmacy</label>
     </div>
     <p className="mr-4">Or</p>
-    <div className="flex items-center me-4">
+    <div className="flex items-center me-4 ms-4">
         <input id="client-radio" type="radio" value="Guest" name="user-radio-group" className="w-4 h-4 text-main-400 bg-gray-100 border-gray-300 focus:ring-main-400 dark:focus:ring-main-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-main-400 dark:border-main-400"/>
-        <label htmlFor="client-radio" className="ms-2 text-sm font-medium ">Guest</label>
+        <label htmlFor="client-radio" className="ms-2 text-sm font-medium ">Client</label>
     </div>
 </div>
 
