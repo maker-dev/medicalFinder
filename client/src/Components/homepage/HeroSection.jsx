@@ -3,7 +3,7 @@ import backgroundImage from "../../Assets/Icons/bg.svg";
 import pillImage from "../../Assets/Icons/Pill.svg";
 function HeroSection() {
   return (
-    <div className="w-full h-screen mt-16 flex flex-col justify-center items-center gap-6" style={{ backgroundImage: `url(${backgroundImage})` }}  >
+    <div className="w-full h-screen flex flex-col justify-center items-center gap-6" style={{ backgroundImage: `url(${backgroundImage})` }}  >
       <div className="flex flex-col md:w-1/2 items-center gap-3">
         <img className="mx-auto" src={pillImage} alt="Pill" />
         <div className="text-center font-mina_bold text-4xl md:text-5xl">

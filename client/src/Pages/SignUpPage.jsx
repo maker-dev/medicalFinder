@@ -11,7 +11,7 @@ function SignUpPage() {
     <>
 
       <Navbar />
-      <div className="h-screen flex items-center my-14">
+      <div className="h-screen flex items-center">
         <div class="w-full max-w-md mx-auto">
           <form className="bg-white shadow-md rounded-md px-8 pt-6 pb-8 ">
             <h1 className="text-center font-black text-4xl">Sign Up</h1>
