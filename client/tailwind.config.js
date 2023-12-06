@@ -23,6 +23,9 @@ module.exports = {
         mina : 'Mina',
         mina_bold :  'MinaBold',
       },
+      height: {
+        '128': '27rem',
+      }
     },
   },
   plugins: [],

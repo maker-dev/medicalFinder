@@ -8,7 +8,7 @@ import PharmacyPage from "./Pages/PharmacyPage";
 
 function App() {
   return (
-    <div className="bg-gray-50">
+    <div className="pt-16 md:pt-20">
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Navigate to={"/home"} />}  />
@@ -21,6 +21,7 @@ function App() {
         </Routes>
       </BrowserRouter>
     </div>
+
   );
 }
 
