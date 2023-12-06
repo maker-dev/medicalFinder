@@ -8,7 +8,6 @@ import PharmacyPage from "./Pages/PharmacyPage";
 
 function App() {
   return (
-    <div className="bg-gray-50">
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Navigate to={"/home"} />}  />
@@ -20,7 +19,7 @@ function App() {
           {/* <Route path="/product/:id" element={<ProductPage product={product} />} /> */}
         </Routes>
       </BrowserRouter>
-    </div>
+
   );
 }
 
