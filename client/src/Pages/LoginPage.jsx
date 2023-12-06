@@ -4,13 +4,14 @@ import Text  from '../Components/inputs/Text';
 import Password from '../Components/inputs/Password';
 import Button from '../Components/inputs/Button';
 import Footer from '../Components/Footer';
+import { Link } from 'react-router-dom';
 
 function LoginPage() {
   return (
     <>
 
       <Navbar />
-      <div className="h-screen flex items-center my-4">
+      <div className="h-screen flex items-center">
         <div className="w-full max-w-md mx-auto">
           <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 ">
             <h1 className="text-center font-black text-4xl">Login</h1>
@@ -94,7 +95,7 @@ function LoginPage() {
 </button>
 </div>
     </div>
-    <h2 className="ms-2 text-sm text-center ">Don't have an account ? <a href="#" className="text-main-400 hover:underline">Sign up</a></h2>
+    <h2 className="ms-2 text-sm text-center ">Don't have an account ? <Link to="/register" className="text-main-400 hover:underline">Sign up</Link></h2>
 
   </form>
         </div>

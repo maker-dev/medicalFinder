@@ -4,6 +4,7 @@ import Text from "../Components/inputs/Text";
 import Button from "../Components/inputs/Button";
 import Password from "../Components/inputs/Password";
 import Footer from "../Components/Footer";
+import { Link } from "react-router-dom";
 
 function SignUpPage() {
   return (
@@ -138,7 +139,7 @@ function SignUpPage() {
 </button>
 </div>
     </div>
-    <h2 className="ms-2 text-sm text-center ">Already a member ? <a href="#" className="text-main-400 hover:underline">Log in</a>.</h2>
+    <h2 className="ms-2 text-sm text-center ">Already a member ? <Link to="/login" className="text-main-400 hover:underline">Log in</Link>.</h2>
 
   </form>
         </div>
