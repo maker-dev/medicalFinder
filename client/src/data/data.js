@@ -23,4 +23,29 @@ export const products = [
     imgUrl: aIcons.prodIc_2,
     description: "Commonly used for pain relief and reducing fever.",
   },
+  {
+    new: false,
+    notif: true,
+    title: "Acetaminophen (Tylenol)",
+    imgUrl: aIcons.prodIc_2,
+    description: "Commonly used for pain relief and reducing fever.",
+  },  {
+    new: false,
+    notif: true,
+    title: "Acetaminophen (Tylenol)",
+    imgUrl: aIcons.prodIc_2,
+    description: "Commonly used for pain relief and reducing fever.",
+  },  {
+    new: false,
+    notif: true,
+    title: "Acetaminophen (Tylenol)",
+    imgUrl: aIcons.prodIc_2,
+    description: "Commonly used for pain relief and reducing fever.",
+  },  {
+    new: false,
+    notif: true,
+    title: "Acetaminophen (Tylenol)",
+    imgUrl: aIcons.prodIc_2,
+    description: "Commonly used for pain relief and reducing fever.",
+  },
 ];

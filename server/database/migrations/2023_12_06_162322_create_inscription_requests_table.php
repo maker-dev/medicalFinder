@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('gestion_medicines', function (Blueprint $table) {
+        Schema::create('inscription_requests', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('idPharmacie');
-            $table->foreign('idPharmacie')->references('id')->on('pharmacies')
-            ->onDelete('cascade')->onUpdate('cascade');
-            $table->bigInteger('quantiteProduit');
+            $table->unsignedBigInteger('pharmacy_id');
+            $table->foreign('pharmacy_id')->references('id')->on('pharmacies')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('gestion_medicines');
+        Schema::dropIfExists('inscription_requests');
     }
 };

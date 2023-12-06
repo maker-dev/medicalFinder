@@ -13,12 +13,15 @@ return new class extends Migration
     {
         Schema::create('pharmacies', function (Blueprint $table) {
             $table->id();
-            $table->string('namePharmacie');
-            $table->string('tel');
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->string('phone');
             $table->string('address');
-            $table->boolean('verifiedPharmacie')->default(false);
             $table->string('city');
-            $table->boolean('permanence');
+            $table->json("location");
+            $table->boolean('verified')->default(false);
+            $table->boolean('permanence')->default(false);
             $table->timestamps();
         });
     }
