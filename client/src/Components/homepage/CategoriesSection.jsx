@@ -3,6 +3,7 @@ import aIcons from "../../Assets/Icons";
 import CategorieCard from "../ui/CategorieCard";
 import ProductCard from "../ui/ProductCard";
 
+
 function CategoriesSection() {
   const categories = [
     { name: "Pain Relief", imgUrl: aIcons.painIc },
