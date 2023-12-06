@@ -14,7 +14,7 @@ function CategoriesSection() {
           to meet your specific health needs.
         </div>
       </div>
-      <div className=" grid grid-cols-3 gap-2 md:flex md:gap-5 ">
+      <div className="flex flex-wrap gap-6 items-center justify-center p-7">
         {categories.map((category, index) => {
           return <CategorieCard key={index} category={category} />;
         })}
@@ -26,7 +26,7 @@ function CategoriesSection() {
           sought-after medicaments that have earned the trust of our community.
         </div>
       </div>
-      <div className="flex flex-wrap gap-2 md:gap-5 justify-center">
+      <div className="flex flex-wrap gap-2 md:gap-5 justify-center items-center">
         {products.map((product, index) => {
           return <ProductCard key={index} product={product}/>;
         })}
