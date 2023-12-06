@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 function CategoriesSection() {
   return (
     <div className='bg-white '>
