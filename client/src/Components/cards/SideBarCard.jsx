@@ -12,21 +12,67 @@ export default function SideBarCard(){
                     <h1 className="text-secondary text-lg font-black ">Search</h1>
                     <input type="search" placeholder="Type pill Pharmacy and more..."  className="bg-gray-200 w-full placeholder-slate-800 rounded-lg text-xs p-2"/>
                 </div>
-                <div>
-                    <h1 className="text-secondary text-lg font-black ">Search</h1>
-                    <select name="" id="" placeholder="ohrgioher" className="bg-gray-200 w-full  rounded-lg text-xs p-2">
+                <div className="w-full my-4">
+                    <div className="flex justify-between w-10/12">
+                        <h1 className="text-secondary text-md font-black ">CITY</h1>
+                        <h2><a href="" className="text-xs font-bold text-slate-500">CLEAR</a></h2>
+                    </div>
+
+                    <select name="" id="" placeholder="ohrgioher" className="bg-gray-200 w-10/12 rounded-lg text-xs p-1">
                         <option value="">test</option>
                     </select>
+
+                    <div className="flex  gap-2  flex-wrap my-4">
+                        <div className="bg-secondary text-white flex justify-start space-x-4  rounded-xl  px-2 py-1">
+                            <h3 className="text-white text-xs font-semibold line-clamp-1">name huhiuh uih ijhiohiohoh</h3>
+                            <button className="text-xs text-white font-thin">x</button>
+                        </div>
+                        <div className="bg-secondary text-white flex justify-start space-x-4  rounded-xl  px-2 py-1">
+                            <h3 className="text-white text-xs font-semibold line-clamp-1">name huhiuh uih ijhiohiohoh</h3>
+                            <button className="text-xs text-white font-thin">x</button>
+                        </div>
+                    </div>
+                    <div className="flex justify-between w-10/12">
+                        <h1 className="text-secondary text-md font-black ">CITY</h1>
+                        <h2><a href="" className="text-xs font-bold text-slate-500">CLEAR</a></h2>
+                    </div>
+
+                    <select name="" id="" placeholder="ohrgioher" className="bg-gray-200 w-10/12 rounded-lg text-xs p-1">
+                        <option value="">test</option>
+                    </select>
+
+                    <div className="flex  gap-2  flex-wrap my-4">
+                        <div className="bg-secondary text-white flex justify-start space-x-4  rounded-xl  px-2 py-1">
+                            <h3 className="text-white text-xs font-semibold line-clamp-1">name huhiuh uih ijhiohiohoh</h3>
+                            <button className="text-xs text-white font-thin">x</button>
+                        </div>
+                        <div className="bg-secondary text-white flex justify-start space-x-4  rounded-xl  px-2 py-1">
+                            <h3 className="text-white text-xs font-semibold line-clamp-1">name huhiuh uih ijhiohiohoh</h3>
+                            <button className="text-xs text-white font-thin">x</button>
+                        </div>
+                    </div>
+                    <div className="flex justify-between w-10/12">
+                        <h1 className="text-secondary text-md font-black ">CITY</h1>
+                        <h2><a href="" className="text-xs font-bold text-slate-500">CLEAR</a></h2>
+                    </div>
+
+                    <select name="" id="" placeholder="ohrgioher" className="bg-gray-200 w-10/12 rounded-lg text-xs p-1">
+                        <option value="">test</option>
+                    </select>
+
+                    <div className="flex  gap-2  flex-wrap my-4">
+                        <div className="bg-secondary text-white flex justify-start space-x-4  rounded-xl  px-2 py-1">
+                            <h3 className="text-white text-xs font-semibold line-clamp-1">name huhiuh uih ijhiohiohoh</h3>
+                            <button className="text-xs text-white font-thin">x</button>
+                        </div>
+                        <div className="bg-secondary text-white flex justify-start space-x-4  rounded-xl  px-2 py-1">
+                            <h3 className="text-white text-xs font-semibold line-clamp-1">name huhiuh uih ijhiohiohoh</h3>
+                            <button className="text-xs text-white font-thin">x</button>
+                        </div>
+                    </div>
                     
                 </div>
-                <div>
-                <h1 className="text-secondary text-lg font-black ">Search</h1>
-                    <input type="SEARCH"  className="bg-gray-200 w-full rounded"/>
-                </div>
-                <div>
-                <h1 className="text-secondary text-lg font-black ">Search</h1>
-                    <input type="search"  className="bg-gray-200 w-full rounded"/>
-                </div>
+                
                 <div>
                     <Button 
                     size='full'
