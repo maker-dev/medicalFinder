@@ -18,4 +18,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource("pharmacies", PharmacyController::class);
+Route::get("/pharmacies", [PharmacyController::class, "index"]);
+Route::get("/pharmacies/{id}", [PharmacyController::class, "show"]);
