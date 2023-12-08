@@ -5,7 +5,7 @@ export default function PharmacyCard(props) {
     <div id="card" className=" w-full ">
       <div className=" w-full flex flex-col">
         <div
-          className="flex flex-col md:flex-row overflow-hidden bg-white rounded-lg shadow-xl">
+          className="flex flex-col md:flex-row overflow-hidden bg-white rounded-lg ">
           <div className=" md:w-1/2 m-6 ">
             <img
               className="inset-0 h-full w-full object-cover object-center"

@@ -2,8 +2,8 @@ export default function ResultBar(){
 
 
     return(
-        <>
-        <div className="mx-2 flex justify-between items-center">
+        <div className="flex flex-col justify-center ">
+        <div className=" flex justify-between items-center">
             <h1 className="font-bold text-lg">Result (12)</h1>
             <div>
                 <label htmlFor="" className="text-gray-400 font-bold">SORT BY </label>
@@ -14,7 +14,7 @@ export default function ResultBar(){
             
         </div>
         <hr className="bg-secondary w-full h-1 mt-2"/>
-        </>
+        </div>
         
     );
 }
