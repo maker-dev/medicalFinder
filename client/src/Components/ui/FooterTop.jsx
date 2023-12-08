@@ -33,6 +33,7 @@ function FooterTop() {
             </svg>
             <input
               type="email"
+              name="email"
               required
               placeholder="Enter your email"
               className="w-full pl-12 pr-14 py-2 text-gray-700 bg-white outline-none border focus:border-main-400 shadow-sm rounded-lg "

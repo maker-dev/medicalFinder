@@ -74,8 +74,8 @@ function SignUpPage() {
 
             
     <div className="mb-4 flex items-center">
-    <input id="link-checkbox" type="checkbox" value="" className="w-4 h-4 text-main-400 bg-gray-100  rounded focus:ring-main-400 dark:focus:ring-main-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-main-600"/>
-    <label htmlFor="link-checkbox" className="ms-2 text-sm ">I agree with the <a href="#" className="text-main-400 hover:underline">terms and conditions</a>.</label>
+    <input name="checkbox-agree" type="checkbox" value="" className="w-4 h-4 text-main-400 bg-gray-100  rounded focus:ring-main-400 dark:focus:ring-main-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-main-600"/>
+    <label htmlFor="checkbox-agree" className="ms-2 text-sm ">I agree with the <a href="agree.com" className="text-main-400 hover:underline">terms and conditions</a>.</label>
     </div>
     <div className="flex items-center justify-between">
       <Button text="Sign Up"></Button>

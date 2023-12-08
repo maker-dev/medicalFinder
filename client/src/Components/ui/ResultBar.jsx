@@ -6,9 +6,10 @@ export default function ResultBar(){
         <div className=" flex justify-between items-center">
             <h1 className="font-bold text-lg">Result (12)</h1>
             <div>
-                <label htmlFor="" className="text-gray-400 font-bold">SORT BY </label>
-                <select name="" className="bg-white px-4 py-1 focus:outline-main-400 ">
-                    <option value="">Newest</option>
+                <label htmlFor="sort"  className="text-gray-400 font-bold">SORT BY </label>
+                <select id="sort" className="bg-white px-4 py-1 focus:outline-main-400 ">
+                    <option value="" defaultValue>Newest</option>
+                    <option value="" >Oldest</option>
                 </select>
             </div>
             
