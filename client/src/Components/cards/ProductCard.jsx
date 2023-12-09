@@ -5,7 +5,7 @@ import bell_on from '../../Assets/Icons/bell_on.svg';
 function ProductCard({ product }) {
   return (
     <>
-  <div className="max-w-sm h-128 rounded-md overflow-hidden shadow-lg p-5">
+  <div className="bg-white max-w-sm h-128 rounded-md overflow-hidden shadow-lg p-5">
     <div className="flex justify-between items-center">
       {product.new ? <div className="bg-main-400 rounded-lg text-white px-4 py-1 w-fit">New</div> 
       :

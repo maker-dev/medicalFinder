@@ -8,6 +8,10 @@ import cleanIc from "./Clean Hands.svg";
 import aidIc from "./Hearing Aid.svg";
 import prodIc_1 from './prod1.svg'
 import prodIc_2 from './prod2.svg'
+import prodIc_3 from './prod3.svg'
+import prodIc_4 from './prod4.svg'
+import prodIc_5 from './prod5.svg'
+import prodIc_6 from './prod6.svg'
 import phaIcDefault from './PharmacyImg.svg'
 //the importation here
 const aIcons = {
@@ -23,6 +27,10 @@ const aIcons = {
   aidIc :aidIc,
   prodIc_1: prodIc_1,
   prodIc_2: prodIc_2,
+  prodIc_3: prodIc_3,
+  prodIc_4: prodIc_4,
+  prodIc_5: prodIc_5,
+  prodIc_6: prodIc_6,
   // adding more icons here
 };
 export default aIcons;
