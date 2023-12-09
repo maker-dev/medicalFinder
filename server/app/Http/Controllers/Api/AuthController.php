@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Traits\HttpResponses;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
@@ -91,18 +92,36 @@ class AuthController extends Controller
             $userInfo = Admin::find($user->user_id);
         }
 
-        $token = $user->createToken("token");
+        $token = $user->createToken("token")->plainTextToken;
+
+        $cookie = cookie("jwt", $token, 7 * 60 * 24); // 1 week
 
         return $this->success([
-            'user'  => $userInfo,
-            'token' => $token->plainTextToken
-        ], null, 200);
+            'user'  => $userInfo
+        ], "Login successfully.", 200)->withCookie($cookie);
 
+    }
+
+    public function user() {
+        $user = Auth::user();
+        if ($user->type == "client") {
+            $userInfo = Client::find($user->id);
+        } else if ($user->type == "pharmacy") {
+            $userInfo = Pharmacy::find($user->id);
+        }
+        return $this->success([
+            'user' => $userInfo
+        ], "Data received successfully.", 200);
     }
 
 
     public function logout() {
 
+        $cookie = Cookie::forget("jwt");
+
+        Auth::user()->tokens()->delete();
+
+        return $this->success(null, "Logout successfully.", 200)->withCookie($cookie);
 
     }
 
