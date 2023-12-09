@@ -3,12 +3,12 @@ import Button from "../inputs/Button";
 export default function SideBarCard(){
     return(
         <div className="w-full">
-            <div className="bg-secondary flex justify-between items-center px-8 py-9">
-                    <h1 className="text-white text-xl">Advanced Search</h1>
+            <div className="bg-secondary flex justify-between items-center px-8 py-12">
+                    <h1 className="text-white ">Advanced Search</h1>
                     <h3 className="text-slate-400 text-sm"><a href="clearall.com">CLEAR ALL</a></h3>
             </div>
-            <div className="bg-white  p-4  ">
-                <div className="w-full">
+            <div className="bg-white  p-4">
+                <div className="w-full mt-4">
                     <h1 className="text-secondary text-lg font-black ">Search</h1>
                     <input type="search" name="searchField" placeholder="Type pill Pharmacy and more..."  className="bg-gray-200 w-full placeholder-slate-800 rounded-lg text-xs p-2"/>
                 </div>
