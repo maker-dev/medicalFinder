@@ -19,13 +19,13 @@ export default function PharmacyCard( {pharmacy} ) {
                 {pharmacy.name}
               </p>
               <p className="font-semibold text-sm text-slate-500 leading-tight truncate">
-                {pharmacy.location}
+                <span className="text-inherit">Location : </span>{pharmacy.location}
               </p>
               <p className="font-semibold text-sm text-slate-500 leading-tight truncate">
-                {pharmacy.op_hours}
+                <span className="text-inherit">Operating Hours : </span>{pharmacy.op_hours}
               </p>
               <p className="font-bold text-sm leading-tight truncate">
-                {pharmacy.rating}
+                <span className="text-inherit">Rating : </span>{pharmacy.rating}
               </p>
             </div>
 
