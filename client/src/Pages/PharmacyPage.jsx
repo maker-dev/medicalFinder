@@ -5,6 +5,7 @@ import ResultBar from '../Components/ui/ResultBar';
 import SideBarCard from '../Components/cards/SideBarCard';
 import FooterBottom from '../Components/ui/FooterBottom';
 import SubscribeBar from '../Components/ui/SubscribeBar';
+import { pharmacies } from '../data/data';
 
 
 function PharmacyPage() {  
@@ -20,11 +21,9 @@ function PharmacyPage() {
     </div>
     <div className='  col-span-12  lg:col-span-9 flex flex-col gap-4 '>
     <SubscribeBar></SubscribeBar>
-    <PharmacyCard imgUrl={null}/>
-    <PharmacyCard imgUrl={null}/>
-    <PharmacyCard imgUrl={null}/>
-    <PharmacyCard imgUrl={null}/>
-    <PharmacyCard imgUrl={null}/>
+    {pharmacies.map((pharmacy,index) => {
+      return <PharmacyCard key={index} pharmacy={pharmacy}/>;
+    })}
 
     
     {/*"Paginaton design"*/}

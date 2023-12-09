@@ -6,6 +6,7 @@ function ListProductPage() {
   return (
     <>
     <Navbar />
+    <div>ListProductPage</div>
     </>
   )
 }

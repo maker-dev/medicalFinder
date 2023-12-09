@@ -49,3 +49,39 @@ export const products = [
     description: "Commonly used for pain relief and reducing fever.",
   },
 ];
+export const pharmacies = [
+  {
+    imgUrl: aIcons.phaIcDefault,
+    name: "Healthy Haven Pharmacy",
+    location: "123 Main Street, Cityville",
+    op_hours: "9:00 AM - 7:00 PM",
+    rating: "4.5 stars",
+    description: "Lorem ipsum dolor sit amet consectetur. Pellentesque elementum gravida sit dolor id. At nulla gravida aenean senectus ac aliquet viverra faucibus. Iaculis tempor in elit mauris nunc iaculis fermentum amet elementum. A vel donec eu sapien. Placerat lectus volutpat sed pellentesque nullam aliquet ac. ",
+  },
+  {
+    imgUrl: aIcons.phaIcDefault,
+    name: "Wellness Corner Pharmacy",
+    location: "456 Oak Avenue, Townsville",
+    op_hours: "8:00 AM - 8:00 PM",
+    rating: "4.2 stars",
+    description: "Lorem ipsum dolor sit amet consectetur. Pellentesque elementum gravida sit dolor id. At nulla gravida aenean senectus ac aliquet viverra faucibus. Iaculis tempor in elit mauris nunc iaculis fermentum amet elementum. A vel donec eu sapien. Placerat lectus volutpat sed pellentesque nullam aliquet ac. ",
+  },
+  {
+    imgUrl: aIcons.phaIcDefault,
+    name: "Swift Pharmacy Solutions",
+    location: "101 Pine Lane, Speedy Town",
+    op_hours: "7:00 AM - 9:00 PM",
+    rating: "4.0 stars",
+    description: "Lorem ipsum dolor sit amet consectetur. Pellentesque elementum gravida sit dolor id. At nulla gravida aenean senectus ac aliquet viverra faucibus. Iaculis tempor in elit mauris nunc iaculis fermentum amet elementum. A vel donec eu sapien. Placerat lectus volutpat sed pellentesque nullam aliquet ac. ",
+  },
+  {
+    imgUrl: aIcons.phaIcDefault,
+    name: "City Health Pharmacy",
+    location: "789 Elm Street, Metro City",
+    op_hours: "24/7",
+    rating: "4.7 stars",
+    description: "Lorem ipsum dolor sit amet consectetur. Pellentesque elementum gravida sit dolor id. At nulla gravida aenean senectus ac aliquet viverra faucibus. Iaculis tempor in elit mauris nunc iaculis fermentum amet elementum. A vel donec eu sapien. Placerat lectus volutpat sed pellentesque nullam aliquet ac. ",
+  },
+]
+export const cities = ["10 metters","1 Km"," 3 km ata least"];
+export const customers = ["3 stars","1 star"," 5 stars"];

@@ -1,6 +1,5 @@
 import aIcons from "../../Assets/Icons";
-export default function PharmacyCard(props) {
-  const { imgUrl } = props;
+export default function PharmacyCard( {pharmacy} ) {
   return (
     <div id="card" className=" w-full ">
       <div className=" w-full flex flex-col">
@@ -9,7 +8,7 @@ export default function PharmacyCard(props) {
           <div className=" md:w-1/2 m-6 ">
             <img
               className="inset-0 h-full w-full object-cover object-center"
-              src={imgUrl === null ? aIcons.phaIcDefault : imgUrl}
+              src={pharmacy.imgUrl === null ? aIcons.phaIcDefault : pharmacy.imgUrl}
               alt="pharamcy"
             />
           </div>
@@ -17,24 +16,21 @@ export default function PharmacyCard(props) {
           <div className="w-full py-4 px-6 text-gray-800 flex flex-col justify-around  mt-2">
             <div className="flex flex-col space-y-4 ">
               <p className="font-bold text-lg leading-tight truncate">
-                Healthy Haven Pharmacy
+                {pharmacy.name}
               </p>
               <p className="font-semibold text-sm text-slate-500 leading-tight truncate">
-                Healthy Haven Pharmacy
+                {pharmacy.location}
               </p>
               <p className="font-semibold text-sm text-slate-500 leading-tight truncate">
-                Healthy Haven Pharmacy
+                {pharmacy.op_hours}
               </p>
               <p className="font-bold text-sm leading-tight truncate">
-                Healthy Haven Pharmacy
+                {pharmacy.rating}
               </p>
             </div>
 
             <p className="text-sm lg:mb-20 my-6">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga,
-              reiciendis molestiae aut nam, qui quibusdam similique animi sint
-              aliquam temporibus ipsam natus a tenetur magnam eos ullam iure
-              consectetur suscipit.
+              {pharmacy.description}
             </p>
           </div>
         </div>

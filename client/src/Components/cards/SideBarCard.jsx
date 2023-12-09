@@ -1,10 +1,9 @@
+import { cities, customers } from "../../data/data";
 import Button from "../inputs/Button";
 import React,{ useState } from "react";
 
 export default function SideBarCard(){
-    //array for option data:
-    const [cities,setCities] = useState(["10 metters","1 Km"," 3 km ata least"]);
-    const [customers,setCustmers] = useState(["3 stars","1 star"," 5 stars"]);
+
     //array for tiquettes filter
     const [cityArr,setCityArr] = useState([]);
     const [customerArr,setCustmerArr] = useState([]);
