@@ -94,7 +94,7 @@ class AuthController extends Controller
 
         $token = $user->createToken("token")->plainTextToken;
 
-        $cookie = cookie("jwt", $token, 7 * 60 * 24); // 1 week
+        $cookie = cookie("jwt", $token, 7 * 24 * 60); // 1 week
 
         return $this->success([
             'user'  => $userInfo
@@ -119,7 +119,7 @@ class AuthController extends Controller
 
         $cookie = Cookie::forget("jwt");
 
-        Auth::user()->tokens()->delete();
+        Auth::user()->currentAccessToken()->delete();
 
         return $this->success(null, "Logout successfully.", 200)->withCookie($cookie);
 
