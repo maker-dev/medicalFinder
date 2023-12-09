@@ -28,7 +28,7 @@ function CategoriesSection() {
         </div>
       </div>
       <div className="flex flex-wrap gap-2 md:gap-5 justify-center items-center">
-        <PopularCard />
+        <PopularCard text={"Most Popular Products"} button={"Show More +"}/>
         {products.map((product, index) => {
           if (index <=1) {
             return <ProductCard key={index} product={product}/>;

@@ -1,4 +1,4 @@
-import { cities, customers } from "../../data/data";
+import { cities, customer_rating } from "../../data/data";
 import Button from "../inputs/Button";
 import React,{ useState } from "react";
 
@@ -20,7 +20,8 @@ export default function SideBarCard(){
         setArr(updatedCityArr);
     }
     // clear all the filter tickets
-    function clearAllTickets(){
+    function clearAllTickets(e){
+            e.preventDefautlt();
             setCityArr([]);
             setCustmerArr([]);
     }
@@ -34,7 +35,7 @@ export default function SideBarCard(){
         <div className="w-full">
             <div className="bg-secondary flex justify-between items-center px-8 py-12">
                     <h1 className="text-white ">Advanced Search</h1>
-                    <h3 className="text-slate-400 text-sm cursor-pointer"><a onClick={clearAllTickets}>CLEAR ALL</a></h3>
+                    <h3 className="text-slate-400 text-sm cursor-pointer"><button onClick={e =>clearAllTickets(e)}>CLEAR ALL</button></h3>
             </div>
             <div className="bg-white  p-4">
                 <div className="w-full mt-4">
@@ -42,12 +43,12 @@ export default function SideBarCard(){
                     <input type="search" name="searchField" placeholder="Type pill Pharmacy and more..."  className="bg-gray-200 w-full placeholder-slate-800 rounded-lg text-xs p-2"/>
                 </div>
                 <div className="w-full mt-2">
-                    <div className="flex justify-between w-10/12 mt-6">
+                    <div className="flex justify-between w-full lg:w-10/12 mt-6">
                         <h1 className="text-secondary text-md font-black ">CITY</h1>
                         <h2><button  onClick={()=>clearTickets(setCityArr)} className="text-xs font-bold text-slate-500">CLEAR</button></h2>
                     </div>
 
-                    <select name="filterLocation"  multiple={false} onChange={(event)=>addTicket(event,setCityArr,cityArr)}  className="bg-gray-200 w-10/12 rounded-lg text-xs p-1">
+                    <select name="filterLocation"  multiple={false} onChange={(event)=>addTicket(event,setCityArr,cityArr)}  className="bg-gray-200 w-full lg:w-10/12 rounded-lg text-xs p-1">
                         <option value="" defaultValue>e.g “NEAR BY” , “ALL”</option>
                         {cities.map((city,index)=> (
                             <option value={city} key={index}>{city}</option>
@@ -63,15 +64,15 @@ export default function SideBarCard(){
                         ))}
                         
                     </div>
-                    <div className="flex justify-between w-10/12 mt-6">
+                    <div className="flex justify-between w-full lg:w-10/12 mt-6">
                         <h1 className="text-secondary text-md font-black ">CUSTOMER RATING</h1>
                         <h2><button onClick={()=>clearTickets(setCustmerArr)} className="text-xs font-bold text-slate-500">CLEAR</button></h2>
                     </div>
 
-                    <select name="filterCustomer" onChange={(event) => addTicket(event,setCustmerArr,customerArr)} className="bg-gray-200 w-10/12 rounded-lg text-xs p-1">
+                    <select name="filterCustomer" onChange={(event) => addTicket(event,setCustmerArr,customerArr)} className="bg-gray-200 w-full lg:w-10/12 rounded-lg text-xs p-1">
                         <option value="" defaultValue>e.g “ALL”</option>
-                        {customers.map((customer,index)=> (
-                            <option value={customer} key={index}>{customer}</option>
+                        {customer_rating.map((rating,index)=> (
+                            <option value={rating} key={index}>{rating}</option>
                         ))}
                     </select>
 
@@ -83,12 +84,12 @@ export default function SideBarCard(){
                         </div>
                         ))}
                     </div>
-                    <div className="flex justify-between w-10/12 mt-6">
+                    <div className="flex justify-between w-full lg:w-10/12 mt-6">
                         <h1 className="text-secondary text-md font-black ">PERMANENCE</h1>
                         <h2><a href="clear.com" className="text-xs font-bold text-slate-500">CLEAR</a></h2>
                     </div>
 
-                    <select name="filterPermanence"  className="bg-gray-200 w-10/12 rounded-lg text-xs p-1">
+                    <select name="filterPermanence"  className="bg-gray-200 w-full lg:w-10/12 rounded-lg text-xs p-1">
                         <option value="" defaultValue>e.g “Yes”</option>
                         <option value="True" > Yes</option>
                         <option value="False" >Not</option>
@@ -99,7 +100,7 @@ export default function SideBarCard(){
                 
                 <div className="my-6">
                     <Button 
-                    size='full '
+                    size='full'
                     text="Search"></Button>
                 </div>
             </div>

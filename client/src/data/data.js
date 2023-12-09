@@ -84,4 +84,4 @@ export const pharmacies = [
   },
 ]
 export const cities = ["10 metters","1 Km"," 3 km ata least"];
-export const customers = ["3 stars","1 star"," 5 stars"];
+export const customer_rating = ["3 stars","1 star"," 5 stars"];
