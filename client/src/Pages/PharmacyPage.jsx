@@ -3,21 +3,22 @@ import Navbar from '../Components/ui/Navbar';
 import PharmacyCard from '../Components/cards/PharmacyCard';
 import ResultBar from '../Components/ui/ResultBar';
 import SideBarCard from '../Components/cards/SideBarCard';
-import Footer from '../Components/Footer';
+import FooterBottom from '../Components/ui/FooterBottom';
+import SubscribeBar from '../Components/ui/SubscribeBar';
 
 function PharmacyPage() {
   return (
     <>
     <Navbar />
-    <div className='mx-2 my-4'> 
+    <div className='mx-8 my-4'> 
     <ResultBar/>
     <div className='  my-4 gap-4 grid   grid-cols-12'>
-    <div className='lg:col-start-1 lg:col-span-4 col-span-12 '>
+    <div className='lg:col-start-1 lg:col-span-3 col-span-12 '>
       <SideBarCard/>
       <h2>zouhfze</h2>
     </div>
-    <div className='  col-span-12  lg:col-span-8 flex flex-col gap-4 '>
-    
+    <div className='  col-span-12  lg:col-span-9 flex flex-col gap-4 '>
+    <SubscribeBar></SubscribeBar>
     <PharmacyCard imgUrl={null}/>
     <PharmacyCard imgUrl={null}/>
     <PharmacyCard imgUrl={null}/>
@@ -41,7 +42,7 @@ function PharmacyPage() {
     </div>
     </div>
     
-    <Footer></Footer>
+    <FooterBottom></FooterBottom>
     </>
     
   )
