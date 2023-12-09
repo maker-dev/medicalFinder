@@ -1,11 +1,41 @@
 import Button from "../inputs/Button";
+import React,{ useState } from "react";
 
 export default function SideBarCard(){
+    //array for option data:
+    const [cities,setCities] = useState(["10 metters","1 Km"," 3 km ata least"]);
+    const [customers,setCustmers] = useState(["3 stars","1 star"," 5 stars"]);
+    //array for tiquettes filter
+    const [cityArr,setCityArr] = useState([]);
+    const [customerArr,setCustmerArr] = useState([]);
+    
+    //function add ticket
+    const addTicket = (event,setArr,arr )=> {
+        let arrTickets = new Set(arr);
+        arrTickets.add(event.target.value);
+        setArr([...arrTickets]);
+    } 
+    //function delete city ticket
+    const deleteTicket = (event,setArr,arr) =>{
+        const updatedCityArr = arr.filter(item => item !== event.target.id);
+        setArr(updatedCityArr);
+    }
+    // clear all the filter tickets
+    function clearAllTickets(){
+            setCityArr([]);
+            setCustmerArr([]);
+    }
+    // clear city the filter tickets
+    const clearTickets = (setArr)=>{
+        setArr([]);
+    }
+    
+
     return(
         <div className="w-full">
             <div className="bg-secondary flex justify-between items-center px-8 py-12">
                     <h1 className="text-white ">Advanced Search</h1>
-                    <h3 className="text-slate-400 text-sm"><a href="clearall.com">CLEAR ALL</a></h3>
+                    <h3 className="text-slate-400 text-sm cursor-pointer"><a onClick={clearAllTickets}>CLEAR ALL</a></h3>
             </div>
             <div className="bg-white  p-4">
                 <div className="w-full mt-4">
@@ -15,41 +45,44 @@ export default function SideBarCard(){
                 <div className="w-full mt-2">
                     <div className="flex justify-between w-10/12 mt-6">
                         <h1 className="text-secondary text-md font-black ">CITY</h1>
-                        <h2><a href="https://hi.com" className="text-xs font-bold text-slate-500">CLEAR</a></h2>
+                        <h2><button  onClick={()=>clearTickets(setCityArr)} className="text-xs font-bold text-slate-500">CLEAR</button></h2>
                     </div>
 
-                    <select name="filterLocation"  className="bg-gray-200 w-10/12 rounded-lg text-xs p-1">
+                    <select name="filterLocation"  multiple={false} onChange={(event)=>addTicket(event,setCityArr,cityArr)}  className="bg-gray-200 w-10/12 rounded-lg text-xs p-1">
                         <option value="" defaultValue>e.g “NEAR BY” , “ALL”</option>
+                        {cities.map((city,index)=> (
+                            <option value={city} key={index}>{city}</option>
+                        ))}
                     </select>
 
                     <div className="flex  gap-2  flex-wrap my-2">
-                        <div className="bg-secondary text-white flex justify-start space-x-4  rounded-xl  px-2 py-1">
-                            <h3 className="text-white text-xs font-semibold line-clamp-1">name huhiuh uih ijhiohiohoh</h3>
-                            <button className="text-xs text-white font-thin">x</button>
+                    {cityArr.map((city)=> (
+                        <div key={city} className="bg-secondary text-white flex justify-start space-x-4  rounded-xl  px-2 py-1">
+                        <h3 className="text-white text-xs font-semibold line-clamp-1">{city}</h3>
+                        <button id={city} onClick={(event)=>deleteTicket(event,setCityArr,cityArr)} className="text-xs text-white font-thin">x</button>
                         </div>
-                        <div className="bg-secondary text-white flex justify-start space-x-4  rounded-xl  px-2 py-1">
-                            <h3 className="text-white text-xs font-semibold line-clamp-1">name huhiuh uih ijhiohiohoh</h3>
-                            <button className="text-xs text-white font-thin">x</button>
-                        </div>
+                        ))}
+                        
                     </div>
                     <div className="flex justify-between w-10/12 mt-6">
                         <h1 className="text-secondary text-md font-black ">CUSTOMER RATING</h1>
-                        <h2><a href="clear.com" className="text-xs font-bold text-slate-500">CLEAR</a></h2>
+                        <h2><button onClick={()=>clearTickets(setCustmerArr)} className="text-xs font-bold text-slate-500">CLEAR</button></h2>
                     </div>
 
-                    <select name="filterCustomer" className="bg-gray-200 w-10/12 rounded-lg text-xs p-1">
+                    <select name="filterCustomer" onChange={(event) => addTicket(event,setCustmerArr,customerArr)} className="bg-gray-200 w-10/12 rounded-lg text-xs p-1">
                         <option value="" defaultValue>e.g “ALL”</option>
+                        {customers.map((customer,index)=> (
+                            <option value={customer} key={index}>{customer}</option>
+                        ))}
                     </select>
 
                     <div className="flex  gap-2  flex-wrap my-2">
-                        <div className="bg-secondary text-white flex justify-start space-x-4  rounded-xl  px-2 py-1">
-                            <h3 className="text-white text-xs font-semibold line-clamp-1">name huhiuh uih ijhiohiohoh</h3>
-                            <button className="text-xs text-white font-thin">x</button>
+                    {customerArr.map((customer)=> (
+                        <div key={customer} className="bg-secondary text-white flex justify-start space-x-4  rounded-xl  px-2 py-1">
+                        <h3 className="text-white text-xs font-semibold line-clamp-1">{customer}</h3>
+                        <button id={customer} onClick={(event)=>deleteTicket(event,setCustmerArr,customerArr)} className="text-xs text-white font-thin">x</button>
                         </div>
-                        <div className="bg-secondary text-white flex justify-start space-x-4  rounded-xl  px-2 py-1">
-                            <h3 className="text-white text-xs font-semibold line-clamp-1">name</h3>
-                            <button className="text-xs text-white font-thin">x</button>
-                        </div>
+                        ))}
                     </div>
                     <div className="flex justify-between w-10/12 mt-6">
                         <h1 className="text-secondary text-md font-black ">PERMANENCE</h1>
@@ -57,7 +90,9 @@ export default function SideBarCard(){
                     </div>
 
                     <select name="filterPermanence"  className="bg-gray-200 w-10/12 rounded-lg text-xs p-1">
-                        <option value="" defaultValue>e.g “True”</option>
+                        <option value="" defaultValue>e.g “Yes”</option>
+                        <option value="True" > Yes</option>
+                        <option value="False" >Not</option>
                     </select>
 
                     

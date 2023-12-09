@@ -6,7 +6,8 @@ import SideBarCard from '../Components/cards/SideBarCard';
 import FooterBottom from '../Components/ui/FooterBottom';
 import SubscribeBar from '../Components/ui/SubscribeBar';
 
-function PharmacyPage() {
+
+function PharmacyPage() {  
   return (
     <>
     <Navbar />
@@ -24,6 +25,8 @@ function PharmacyPage() {
     <PharmacyCard imgUrl={null}/>
     <PharmacyCard imgUrl={null}/>
     <PharmacyCard imgUrl={null}/>
+
+    
     {/*"Paginaton design"*/}
   <nav aria-label="Page navigation" className='mx-auto	my-20'>
     <ul className="inline-flex ">
