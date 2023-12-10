@@ -72,18 +72,13 @@ function SignUpPage() {
          
          {userType==="pharmacy" && (
           <form >
-
-<div className="md:flex  md:space-x-2 block space-x-0">
-              
-              <div className="md:mb-2 mb-4 ">
+              <div className=" mb-4 ">
                 <Text
                   type="text"
                   size="full"
                   name="pharmacyname"
                   placeholder="Pharmacy Name*"
                 />
-              </div>
-              
               </div>
               
               <div className="mb-4">
