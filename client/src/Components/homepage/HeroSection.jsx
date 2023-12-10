@@ -36,7 +36,7 @@ function HeroSection() {
             </svg>
             <input
               type="text"
-              placeholder="Type Pill, Pharmacy and more ..."
+              placeholder="Search for Medications..."
               name=""
               id=""
               className='w-full py-3 pl-12 pr-4 text-gray-700 border rounded-md outline-none bg-white focus:bg-white focus:border-main-400'
@@ -46,8 +46,7 @@ function HeroSection() {
         </div>
         </form>
         <div className="text-center">
-          <span className="font-bold">ProTip!</span> Share insights about your
-          health condition here.
+          <span className="font-bold">ProTip!</span> Share details about the medications you're looking for here.
         </div>
       </div>
     </div>
