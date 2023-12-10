@@ -1,4 +1,4 @@
-import React from "react";
+import React ,{useState} from "react";
 import Navbar from "../Components/ui/Navbar";
 import Text from "../Components/inputs/Text";
 import Button from "../Components/inputs/Button";
@@ -7,6 +7,11 @@ import Footer from "../Components/Footer";
 import { Link } from "react-router-dom";
 
 function SignUpPage() {
+  const [userType, setUserType] = useState('client');
+
+  const handleUserTypeChange = (e) => {
+    setUserType(e.target.value);
+  };
   return (
     <>
 
@@ -16,7 +21,10 @@ function SignUpPage() {
           <form className="bg-white shadow-md rounded-md px-8 pt-6 pb-8 ">
             <h1 className="text-center font-black text-4xl">Sign Up</h1>
             <h2 className="text-center  text-xl mt-2 mb-4">Hi There !</h2>
-            <div className="md:flex  md:space-x-2 block space-x-0">
+            {userType==="client" &&(
+              <form>
+                <div className="md:flex  md:space-x-2 block space-x-0">
+              
             <div className="md:mb-2 mb-4 ">
               <Text
                 type="text"
@@ -58,16 +66,65 @@ function SignUpPage() {
               />
               <p className="mt-2">Password must be at least 8 characters long.</p>
             </div>
+              </form>
+                 
+            )}
+         
+         {userType==="pharmacy" && (
+          <form >
+
+<div className="md:flex  md:space-x-2 block space-x-0">
+              
+              <div className="md:mb-2 mb-4 ">
+                <Text
+                  type="text"
+                  size="full"
+                  name="pharmacyname"
+                  placeholder="Pharmacy Name*"
+                />
+              </div>
+              
+              </div>
+              
+              <div className="mb-4">
+                <Text
+                  type="email"
+                  size="full"
+                  name="email"
+                  placeholder="E-mail*"
+                />
+              </div>
+              <div className="mb-4">
+                <Password 
+                name="createpassword" 
+                placeholder="Create Password*" />
+              </div>
+
+              <div className="mb-4">
+              <Text
+                type="password"
+                size="full"
+                name="confirmpassword"
+                placeholder="Confirm Password*"
+              />
+              <p className="mt-2">Password must be at least 8 characters long.</p>
+            </div>
+          </form>
+         )}
             
 <div className="flex mb-4 flex-col sm:flex-row">
     <h1 className="mr-4">Are you a ? </h1> 
     <div className="flex items-center me-4 ms-4">
-        <input id="pharmacy-radio" type="radio" value="Pharmacy" name="user-radio-group" className="w-4 h-4 text-main-400 bg-gray-100 border-gray-300 focus:ring-main-400 dark:focus:ring-main-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-main-400 dark:border-main-400"/>
+        <input id="pharmacy-radio" type="radio" value="pharmacy"
+                checked={userType === 'pharmacy'}
+                onChange={handleUserTypeChange} name="user-radio-group" className="w-4 h-4 text-main-400 bg-gray-100 border-gray-300 focus:ring-main-400 dark:focus:ring-main-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-main-400 dark:border-main-400"/>
         <label htmlFor="pharmacy-radio" className="ms-2 text-sm font-medium ">Pharmacy</label>
     </div>
     <p className="mr-4">Or</p>
     <div className="flex items-center me-4 ms-4">
-        <input id="client-radio" type="radio" value="Guest" name="user-radio-group" className="w-4 h-4 text-main-400 bg-gray-100 border-gray-300 focus:ring-main-400 dark:focus:ring-main-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-main-400 dark:border-main-400"/>
+        <input id="client-radio" type="radio" value="client"
+                checked={userType === 'client'}
+                onChange={handleUserTypeChange} name="user-radio-group" className="w-4 h-4 text-main-400 bg-gray-100 border-gray-300 focus:ring-main-400 dark:focus:ring-main-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-main-400 dark:border-main-400"/>
         <label htmlFor="client-radio" className="ms-2 text-sm font-medium ">Client</label>
     </div>
 </div>
