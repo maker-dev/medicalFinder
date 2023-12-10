@@ -22,7 +22,7 @@ function SignUpPage() {
             <h1 className="text-center font-black text-4xl">Sign Up</h1>
             <h2 className="text-center  text-xl mt-2 mb-4">Hi There !</h2>
             {userType==="client" &&(
-              <form>
+              <>
                 <div className="md:flex  md:space-x-2 block space-x-0">
               
             <div className="md:mb-2 mb-4 ">
@@ -66,12 +66,12 @@ function SignUpPage() {
               />
               <p className="mt-2">Password must be at least 8 characters long.</p>
             </div>
-              </form>
+              </>
                  
             )}
          
          {userType==="pharmacy" && (
-          <form >
+          < >
               <div className=" mb-4 ">
                 <Text
                   type="text"
@@ -104,7 +104,7 @@ function SignUpPage() {
               />
               <p className="mt-2">Password must be at least 8 characters long.</p>
             </div>
-          </form>
+          </>
          )}
             
 <div className="flex mb-4 flex-col sm:flex-row">
