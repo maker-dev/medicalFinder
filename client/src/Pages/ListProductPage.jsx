@@ -21,7 +21,7 @@ function ListProductPage() {
           <SideBarCard />
           <PopularCard text={"GET DAILY UPDATE"} button={"SUBSCRIBE"} />
         </div>
-        <div className="  col-span-12  lg:col-span-9 flex flex-col gap-4  items-center justify-center">
+        <div className="  col-span-12  lg:col-span-9 flex flex-col gap-4  items-center">
           <SubscribeBar />
           <div className='grid md:grid-cols-2 items-center justify-center gap-12'>
           {products.map((product, index) => {

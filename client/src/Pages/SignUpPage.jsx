@@ -8,6 +8,11 @@ import { Link } from "react-router-dom";
 
 function SignUpPage() {
   const [userType, setUserType] = useState('client');
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirmation, setPasswordConfirmation] = useState("");
 
   const handleUserTypeChange = (e) => {
     setUserType(e.target.value);
@@ -29,7 +34,9 @@ function SignUpPage() {
               <Text
                 type="text"
                 size="full"
-                name="firstname"
+                name="firstName"
+                inputValue={firstName}
+                onInputChange={setFirstName}
                 placeholder="First Name*"
               />
             </div>
@@ -37,7 +44,9 @@ function SignUpPage() {
               <Text
                 type="text"
                 size="full"
-                name="lastname"
+                name="lastName"
+                inputValue={lastName}
+                onInputChange={setLastName}
                 placeholder="Last Name*"
               />
             </div>
@@ -48,12 +57,16 @@ function SignUpPage() {
                 type="email"
                 size="full"
                 name="email"
+                inputValue={email}
+                onInputChange={setEmail}
                 placeholder="E-mail*"
               />
             </div>
             <div className="mb-4">
               <Password 
-              name="createpassword" 
+              name="password" 
+              inputValue={password}
+              onInputChange={setPassword}
               placeholder="Create Password*" />
             </div>
 
@@ -61,22 +74,22 @@ function SignUpPage() {
               <Text
                 type="password"
                 size="full"
-                name="confirmpassword"
+                inputValue={passwordConfirmation}
+                onInputChange={setPasswordConfirmation}
+                name="password_confirmation"
                 placeholder="Confirm Password*"
               />
               <p className="mt-2">Password must be at least 8 characters long.</p>
             </div>
               </>
-                 
             )}
-         
-         {userType==="pharmacy" && (
+        {userType==="pharmacy" && (
           < >
               <div className=" mb-4 ">
                 <Text
                   type="text"
                   size="full"
-                  name="pharmacyname"
+                  name="name"
                   placeholder="Pharmacy Name*"
                 />
               </div>
@@ -91,7 +104,7 @@ function SignUpPage() {
               </div>
               <div className="mb-4">
                 <Password 
-                name="createpassword" 
+                name="password" 
                 placeholder="Create Password*" />
               </div>
 
@@ -99,7 +112,7 @@ function SignUpPage() {
               <Text
                 type="password"
                 size="full"
-                name="confirmpassword"
+                name="password_confirmation"
                 placeholder="Confirm Password*"
               />
               <p className="mt-2">Password must be at least 8 characters long.</p>
