@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\MedicineController;
 use App\Http\Controllers\Api\PharmacyController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get("/pharmacies", [PharmacyController::class, "index"]);
 Route::get("/pharmacies/{id}", [PharmacyController::class, "show"]);
+
+Route::get("/medicines", [MedicineController::class, "index"]);
+Route::get("/medicines/{id}", [MedicineController::class, "show"]);
 
 Route::post("/register", [AuthController::class, "register"]);
 Route::post("/login", [AuthController::class, "login"]);
