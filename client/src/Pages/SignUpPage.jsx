@@ -26,11 +26,14 @@ function SignUpPage() {
           <form className="bg-white shadow-md rounded-md px-8 pt-6 pb-8 ">
             <h1 className="text-center font-black text-4xl">Sign Up</h1>
             <h2 className="text-center  text-xl mt-2 mb-4">Hi There !</h2>
-            {userType==="client" &&(
+            
               <>
-                <div className="md:flex  md:space-x-2 block space-x-0">
-              
-            <div className="md:mb-2 mb-4 ">
+                
+                {userType==="client" &&(
+
+                  <>
+                  <div className="md:flex  md:space-x-2 block space-x-0">
+                  <div className="md:mb-2 mb-4 ">
               <Text
                 type="text"
                 size="full"
@@ -51,6 +54,22 @@ function SignUpPage() {
               />
             </div>
             </div>
+            
+            </>
+            
+            )}
+            
+           
+            {userType==="pharmacy" && (
+            <div className=" mb-4 mt-6  ">
+                <Text
+                  type="text"
+                  size="full"
+                  name="name"
+                  placeholder="Pharmacy Name*"
+                />
+              </div>
+            )}
             
             <div className="mb-4">
               <Text
@@ -82,43 +101,8 @@ function SignUpPage() {
               <p className="mt-2">Password must be at least 8 characters long.</p>
             </div>
               </>
-            )}
-        {userType==="pharmacy" && (
-          < >
-              <div className=" mb-4 ">
-                <Text
-                  type="text"
-                  size="full"
-                  name="name"
-                  placeholder="Pharmacy Name*"
-                />
-              </div>
-              
-              <div className="mb-4">
-                <Text
-                  type="email"
-                  size="full"
-                  name="email"
-                  placeholder="E-mail*"
-                />
-              </div>
-              <div className="mb-4">
-                <Password 
-                name="password" 
-                placeholder="Create Password*" />
-              </div>
-
-              <div className="mb-4">
-              <Text
-                type="password"
-                size="full"
-                name="password_confirmation"
-                placeholder="Confirm Password*"
-              />
-              <p className="mt-2">Password must be at least 8 characters long.</p>
-            </div>
-          </>
-         )}
+            
+       
             
 <div className="flex mb-4 flex-col sm:flex-row">
     <h1 className="mr-4">Are you a ? </h1> 
