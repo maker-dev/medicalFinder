@@ -9,24 +9,23 @@ class Pharmacy extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $fillable = [
         'name',
-        'email',
-        'password',
+        'description',
+        'opening_time',
+        'opening_time',
         'phone',
         'address',
         'city',
         'location',
+        'image',
         'verified',
         'permanence'
     ];
 
-    protected $hidden = [
-        'password'
-    ];
-
     protected $casts = [
-        'password' => 'hashed',
         'location' => 'json'
     ];
 

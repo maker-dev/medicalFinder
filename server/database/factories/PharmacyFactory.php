@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Facades\Hash;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Pharmacy>
@@ -21,12 +20,14 @@ class PharmacyFactory extends Factory
     {
         return [
                 'name' => fake()->name(),
-                'email' => fake()->unique()->safeEmail(),
-                'password' => static::$password ??= Hash::make('password'),
+                'description' => fake()->sentences(5, true),
+                'opening_time' => fake()->time(),
+                'closing_time' => fake()->time(),
                 'phone' => fake()->phoneNumber(),
                 'address' => fake()->address(),
                 'city' => fake()->city(),
                 'location' => ['latitude' => fake()->latitude(), 'longitude' => fake()->longitude()],
+                'image' => null,
                 'verified' => fake()->boolean(),
                 'permanence' => fake()->boolean()
         ];

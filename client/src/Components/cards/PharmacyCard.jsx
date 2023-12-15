@@ -1,4 +1,5 @@
 import aIcons from "../../Assets/Icons";
+
 export default function PharmacyCard( {pharmacy} ) {
   return (
     <div id="card" className=" w-full ">
@@ -9,7 +10,7 @@ export default function PharmacyCard( {pharmacy} ) {
             <img
               className="inset-0 h-full w-full object-cover object-center"
               src={pharmacy.imgUrl === null ? aIcons.phaIcDefault : pharmacy.imgUrl}
-              alt="pharamcy"
+              alt="pharmacy image"
             />
           </div>
 

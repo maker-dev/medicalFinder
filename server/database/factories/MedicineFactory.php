@@ -18,8 +18,8 @@ class MedicineFactory extends Factory
     {
         return [
             'title' => fake()->jobTitle(),
-            'description' => fake()->sentences(3, true),
-            'image' => "/images/image",
+            'description' => fake()->sentences(1, true),
+            'image' => null,
             'category' => fake()->word(),
             'forAdult' => fake()->boolean()
         ];

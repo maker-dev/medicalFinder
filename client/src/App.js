@@ -4,7 +4,7 @@ import HomePage from "./Pages/HomePage";
 import LoginPage from "./Pages/LoginPage";
 import SignUpPage from "./Pages/SignUpPage";
 import ListProductPage from "./Pages/ListProductPage";
-import PharmacyPage from "./Pages/PharmacyPage";
+import ListPharmacyPage from "./Pages/ListPharmacyPage";
 import { useLayoutEffect } from "react";
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<SignUpPage />} />
           <Route path="/products" element={<ListProductPage />} />
-          <Route path="/pharmacies" element={<PharmacyPage />} />
+          <Route path="/pharmacies" element={<ListPharmacyPage />} />
           {/* <Route path="/product/:id" element={<ProductPage product={product} />} /> */}
         </Routes>
     </div>

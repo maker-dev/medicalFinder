@@ -1,16 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from "../Components/ui/Navbar";
 import ResultBar from '../Components/ui/ResultBar';
 import SideBarCard from '../Components/cards/SideBarCard';
 import PopularCard from '../Components/cards/PopularCard';
 import SubscribeBar from '../Components/ui/SubscribeBar';
-import { products } from '../data/data';
-import Pagination from '../Components/ui/Pagination';
 import FooterBottom from '../Components/ui/FooterBottom';
 import ProductCard from '../Components/cards/ProductCard';
-
+import api from '../Api/api';
+import ReactPaginate from 'react-paginate';
 
 function ListProductPage() {
+
+  const [medicinesPagination, setMedicinesPagination] = useState();
+
+  useEffect(() => {
+    getMedicinesData();
+  }, [])
+
+  const getMedicinesData = async (pageNumber) => {
+    const endPoint = `medicines?page=${pageNumber}`;
+    const response = await api.get(endPoint);
+    setMedicinesPagination(response.data.data);
+  }
+
   return (
     <>
     <Navbar />
@@ -24,13 +36,34 @@ function ListProductPage() {
         <div className="  col-span-12  lg:col-span-9 flex flex-col gap-4  items-center">
           <SubscribeBar />
           <div className='grid md:grid-cols-2 items-center justify-center gap-12'>
-          {products.map((product, index) => {
-            return <ProductCard key={index} product={product} />;
+          {medicinesPagination && medicinesPagination.data.map((product) => {
+            return <ProductCard key={product.id} product={product} />;
           })}
           </div>
 
-          {/*"Paginaton design"*/}
-          <Pagination />
+          {/*"pagination design"*/}
+          <div className='mb-5'>
+          {
+            medicinesPagination &&
+            <ReactPaginate
+            forcePage={medicinesPagination.current_page - 1}
+            pageCount={Math.ceil(medicinesPagination.total / medicinesPagination.per_page)}
+            itemsPerPage={medicinesPagination.per_page}
+            onPageChange={(pageNumber) => getMedicinesData(pageNumber.selected + 1)}
+            pageRangeDisplayed={5} 
+            marginPagesDisplayed={2}
+            containerClassName="flex justify-center mt-8"
+            pageClassName="mx-2 px-3 py-2 bg-gray-300 hover:bg-gray-400 border rounded transition-colors duration-300"
+            activeClassName="bg-blue-500 text-white"
+            breakClassName="mx-2 px-3 py-2 bg-gray-300 border rounded"
+            breakLinkClassName="text-blue-500"
+            previousLabel="Previous"
+            nextLabel="Next"
+            previousClassName="mx-2 px-3 py-2 bg-gray-300 hover:bg-gray-400 border rounded transition-colors duration-300"
+            nextClassName="mx-2 px-3 py-2 bg-gray-300 hover:bg-gray-400 border rounded transition-colors duration-300"
+          />
+          }
+          </div>
         </div>
       </div>
     </div>

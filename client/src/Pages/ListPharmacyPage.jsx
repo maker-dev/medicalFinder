@@ -9,7 +9,7 @@ import { pharmacies } from "../data/data";
 import PopularCard from "../Components/cards/PopularCard";
 import Pagination from "../Components/ui/Pagination";
 
-function PharmacyPage() {
+function ListPharmacyPage() {
   return (
     <>
       <Navbar />
@@ -38,4 +38,4 @@ function PharmacyPage() {
   );
 }
 
-export default PharmacyPage;
+export default ListPharmacyPage;
