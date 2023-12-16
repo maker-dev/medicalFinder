@@ -17,7 +17,8 @@ function ListProductPage() {
     getMedicinesData();
   }, [])
 
-  const getMedicinesData = async (pageNumber) => {
+  const getMedicinesData = async (pageNumber = 1) => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     const endPoint = `medicines?page=${pageNumber}`;
     const response = await api.get(endPoint);
     setMedicinesPagination(response.data.data);

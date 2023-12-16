@@ -23,19 +23,9 @@ class MedicineController extends Controller
         return $this->success($medicine, null, 200);
     }
 
-    public function searchMedicine(Request $request)
-{
-    if ($request->has('search')) {
+    public function search(Request $request) {
         $search = $request->input('search');
-        $data = DB::table('medicines')
-            ->where('title', 'LIKE', '%' . $search . '%')
-            
-            ->get();
-       
-        return response()->json($data);
-    } else {
-        return response()->json([]);
+        $medicines = Medicine::where('title', 'LIKE', '%' . $search . '%')->get();
+        return $this->success($medicines, null, 200);
     }
-
-}
 }
