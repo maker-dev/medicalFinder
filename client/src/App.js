@@ -6,6 +6,7 @@ import SignUpPage from "./Pages/SignUpPage";
 import ListProductPage from "./Pages/ListProductPage";
 import PharmacyPage from "./Pages/PharmacyPage";
 import { useLayoutEffect } from "react";
+import ErrorPage from "./Pages/ErrorPage";
 
 function App() {
   const { pathname } = useLocation();
@@ -24,6 +25,7 @@ function App() {
           <Route path="/products" element={<ListProductPage />} />
           <Route path="/pharmacies" element={<PharmacyPage />} />
           {/* <Route path="/product/:id" element={<ProductPage product={product} />} /> */}
+          <Route path="*" element={<ErrorPage/>} />
         </Routes>
     </div>
 
