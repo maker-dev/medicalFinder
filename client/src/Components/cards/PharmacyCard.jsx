@@ -1,4 +1,6 @@
-import aIcons from "../../Assets/Icons";
+import phaIcDefault from "../../Assets/Icons/PharmacyImg.svg";
+import FormatAmPm from '../../helpers/FormatAmPm.js';
+
 export default function PharmacyCard( {pharmacy} ) {
   return (
     <div id="card" className=" w-full ">
@@ -8,8 +10,8 @@ export default function PharmacyCard( {pharmacy} ) {
           <div className=" md:w-1/2 m-6 ">
             <img
               className="inset-0 h-full w-full object-cover object-center"
-              src={pharmacy.imgUrl === null ? aIcons.phaIcDefault : pharmacy.imgUrl}
-              alt="pharamcy"
+              src={pharmacy.image === null ? phaIcDefault : phaIcDefault}
+              alt="pharmacy image"
             />
           </div>
 
@@ -19,13 +21,13 @@ export default function PharmacyCard( {pharmacy} ) {
                 {pharmacy.name}
               </p>
               <p className="font-semibold text-sm text-slate-500 leading-tight truncate">
-                <span className="text-inherit">Location : </span>{pharmacy.location}
+                <span className="text-inherit">Address : </span>{pharmacy.address}
               </p>
               <p className="font-semibold text-sm text-slate-500 leading-tight truncate">
-                <span className="text-inherit">Operating Hours : </span>{pharmacy.op_hours}
+                <span className="text-inherit">Operating Hours : </span>{FormatAmPm(pharmacy.opening_time)} - {FormatAmPm(pharmacy.closing_time)}
               </p>
               <p className="font-bold text-sm leading-tight truncate">
-                <span className="text-inherit">Rating : </span>{pharmacy.rating}
+                <span className="text-inherit">Rating : </span>nothing for now
               </p>
             </div>
 
