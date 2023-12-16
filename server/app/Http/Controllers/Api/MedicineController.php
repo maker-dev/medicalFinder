@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use App\Models\Medicine;
 use Illuminate\Http\Request;
 use App\Traits\HttpResponses;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
@@ -37,23 +36,19 @@ class MedicineController extends Controller
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->storeAs('storage/images', $imageName); 
-    
-           
+            $image->storeAs('storage/images', $imageName);
+
+
             $request->merge(['image' => $imageName]);
         }
 
         $medicine = Medicine::create($request->all());
 
-       
         return $this->success($medicine,null,200);
     }
 
-    public function update(Request $request, $id)
-{
+    public function update(Request $request, $id) {
     $medicine = Medicine::find($id);
-
-   
 
     $request->validate([
         'name' => 'required',
@@ -63,36 +58,35 @@ class MedicineController extends Controller
         'forAdult'=>'required'
     ]);
 
-    
+
     if ($request->hasFile('image')) {
-        
+
         if ($medicine->image) {
             Storage::delete('storage/images/' . $medicine->image);
         }
 
-        
         $image = $request->file('image');
         $imageName = time() . '.' . $image->getClientOriginalExtension();
-        $image->storeAs('storage/images', $imageName); 
+        $image->storeAs('storage/images', $imageName);
 
-        
+
         $request->merge(['image' => $imageName]);
     }
 
     $medicine->update($request->all());
 
     return $this->success($medicine,null,200);
-}
 
-public function destroy($id)
-    {
+    }
+
+    public function destroy($id) {
         $medicine = Medicine::find($id);
 
-       
+
 
         $medicine->delete();
 
-        
+
         return $this->success($medicine,null,200);
     }
 
