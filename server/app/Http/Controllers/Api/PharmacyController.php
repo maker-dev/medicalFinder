@@ -13,11 +13,17 @@ class PharmacyController extends Controller
     {
         $query = Pharmacy::query()->where("verified", true);
         $pharmacies = $query->paginate(5);
+
+        $pharmacies->each(function ($pharmacy) {
+            $pharmacy->ratings = $pharmacy->averageRating();
+        });
+
         return $this->success($pharmacies, null, 200);
     }
 
     public function show(String $id) {
         $pharmacy = Pharmacy::find($id);
+        $pharmacy->ratings = $pharmacy->averageRating();
         return $this->success($pharmacy, null, 200);
     }
 }
