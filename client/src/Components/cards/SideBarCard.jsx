@@ -20,8 +20,8 @@ export default function SideBarCard(){
         setArr(updatedCityArr);
     }
     // clear all the filter tickets
-    function clearAllTickets(e){
-            e.preventDefautlt();
+    function clearAllTickets(event){
+            event.preventDefault();
             setCityArr([]);
             setCustmerArr([]);
     }
@@ -35,7 +35,7 @@ export default function SideBarCard(){
         <div className="w-full">
             <div className="bg-secondary flex justify-between items-center px-8 py-12">
                     <h1 className="text-white ">Advanced Search</h1>
-                    <h3 className="text-slate-400 text-sm cursor-pointer"><button onClick={e =>clearAllTickets(e)}>CLEAR ALL</button></h3>
+                    <h3 className="text-slate-400 text-sm cursor-pointer"><button onClick={(event)=>clearAllTickets(event)}>CLEAR ALL</button></h3>
             </div>
             <div className="bg-white  p-4">
                 <div className="w-full mt-4">
