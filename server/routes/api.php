@@ -22,6 +22,9 @@ Route::get("/pharmacies/{id}", [PharmacyController::class, "show"]);
 Route::get("/medicines", [MedicineController::class, "index"]);
 Route::get('/medicines/search',[MedicineController::class,'search']);
 Route::get("/medicines/{id}", [MedicineController::class, "show"]);
+Route::post('/medicines', [MedicineController::class, 'store']);
+Route::put('/medicines/{id}', [MedicineController::class, 'update']);
+Route::delete('/medicines/{id}', [MedicineController::class, 'destroy']);
 
 Route::post("/register", [AuthController::class, "register"]);
 Route::post("/login", [AuthController::class, "login"]);
