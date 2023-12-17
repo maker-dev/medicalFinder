@@ -4,19 +4,33 @@ import Text from "../Components/inputs/Text";
 import Button from "../Components/inputs/Button";
 import Password from "../Components/inputs/Password";
 import Footer from "../Components/Footer";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import api from '../Api/api';
+import Loader from '../Components/ui/Loader';
 
 function SignUpPage() {
   const [userType, setUserType] = useState('client');
+  const [name, setName] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [password_confirmation, setPassword_confirmation] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleUserTypeChange = (e) => {
     setUserType(e.target.value);
   };
+
+  const signUpUser = async (e) => {
+    setLoading(true);
+    e.preventDefault();
+    const response = await api.post('register', JSON.stringify({userType,name, firstName, lastName, email, password, password_confirmation}))
+    navigate("/login");
+    setLoading(false);
+  }
+
   return (
     <>
 
@@ -59,13 +73,14 @@ function SignUpPage() {
             
             )}
             
-           
             {userType==="pharmacy" && (
             <div className=" mb-4 mt-6  ">
                 <Text
                   type="text"
                   size="full"
                   name="name"
+                  inputValue={name}
+                  onInputChange={setName}
                   placeholder="Pharmacy Name*"
                 />
               </div>
@@ -93,8 +108,8 @@ function SignUpPage() {
               <Text
                 type="password"
                 size="full"
-                inputValue={passwordConfirmation}
-                onInputChange={setPasswordConfirmation}
+                inputValue={password_confirmation}
+                onInputChange={setPassword_confirmation}
                 name="password_confirmation"
                 placeholder="Confirm Password*"
               />
@@ -127,7 +142,7 @@ function SignUpPage() {
     <label htmlFor="checkbox-agree" className="ms-2 text-sm ">I agree with the <a href="agree.com" className="text-main-400 hover:underline">terms and conditions</a>.</label>
     </div>
     <div className="flex items-center justify-between">
-      <Button text="Sign Up"></Button>
+      <Button text="Sign Up" onBtnClick={signUpUser}></Button>
     </div>
     <div className="inline-flex items-center justify-center w-full">
     <hr className="w-full h-px my-8 bg-slate-900 border-0 "/>
@@ -193,6 +208,7 @@ function SignUpPage() {
   </form>
         </div>
       </div>
+      {loading && <Loader />}
       <Footer />
     </>
   );

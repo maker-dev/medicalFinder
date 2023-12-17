@@ -28,7 +28,7 @@ function ListProductPage() {
     <>
     <Navbar />
     <div className="mx-8 my-4">
-      <ResultBar />
+      <ResultBar results={medicinesPagination && medicinesPagination.total}/>
       <div className="  my-4 gap-4 grid grid-cols-12">
         <div className="lg:col-start-1 lg:col-span-3 col-span-12 flex flex-col items-center gap-5 ">
           <SideBarCard />

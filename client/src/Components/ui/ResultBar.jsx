@@ -1,10 +1,10 @@
-export default function ResultBar(){
+export default function ResultBar({results}){
 
 
     return(
         <div className="flex flex-col justify-center ">
         <div className=" flex justify-between items-center">
-            <h1 className="font-bold text-lg">Result (12)</h1>
+            <h1 className="font-bold text-lg">Result {results}</h1>
             <div>
                 <label htmlFor="sort"  className="text-gray-400 font-bold">SORT BY </label>
                 <select id="sort" className="bg-white px-4 py-1 focus:outline-main-400 ">

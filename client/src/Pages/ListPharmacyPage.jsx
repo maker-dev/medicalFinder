@@ -25,11 +25,12 @@ function ListPharmacyPage() {
     setPharmaciesPagination(response.data.data);
   }
 
+
   return (
     <>
       <Navbar />
       <div className="mx-8 my-4">
-        <ResultBar />
+        <ResultBar results={pharmaciesPagination && pharmaciesPagination.total}/>
         <div className="  my-4 gap-4 grid   grid-cols-12">
           <div className="lg:col-start-1 lg:col-span-3 col-span-12 flex flex-col items-center gap-5 ">
             <SideBarCard />
@@ -54,14 +55,14 @@ function ListPharmacyPage() {
               pageRangeDisplayed={5}
               marginPagesDisplayed={2}
               containerClassName="flex justify-center mt-8"
-              pageClassName="mx-2 px-3 py-2 bg-gray-300 hover:bg-gray-400 border rounded transition-colors duration-300"
-              activeClassName="bg-blue-500 text-white"
-              breakClassName="mx-2 px-3 py-2 bg-gray-300 border rounded"
-              breakLinkClassName="text-blue-500"
-              previousLabel="Previous"
-              nextLabel="Next"
-              previousClassName="mx-2 px-3 py-2 bg-gray-300 hover:bg-gray-400 border rounded transition-colors duration-300"
-              nextClassName="mx-2 px-3 py-2 bg-gray-300 hover:bg-gray-400 border rounded transition-colors duration-300"
+              pageClassName="mx-2 px-3 py-2  hover:text-main-400 transition-colors duration-300"
+              activeClassName="text-main-400 "
+              breakClassName="mx-2 px-3 py-2 bg-gray-300  "
+              breakLinkClassName="text-main-400"
+              previousLabel="<"
+              nextLabel=">"
+              previousClassName="mx-2 px-3 py-2   hover:text-main-400 text-lg font-black transition-colors duration-300"
+              nextClassName="mx-2 px-3 py-2   hover:text-main-400 text-lg font-black transition-colors duration-300"
           />
           }
           </div>

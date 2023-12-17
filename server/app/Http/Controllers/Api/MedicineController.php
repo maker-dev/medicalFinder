@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use App\Models\Medicine;
 use Illuminate\Http\Request;
 use App\Traits\HttpResponses;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
@@ -65,6 +64,7 @@ class MedicineController extends Controller
     ]);
 
     $medicineData = $request->all();
+
     
     if ($request->has('image')) {
         
@@ -72,7 +72,6 @@ class MedicineController extends Controller
             Storage::delete('public/images/imgMedicine' . $medicine->image);
         }
 
-        
         $image = $request->file('image');
         $imageName = time() . '.' . $image->getClientOriginalExtension();
         $image->storeAs('public/images/imgMedicine', $imageName); 
@@ -84,17 +83,17 @@ class MedicineController extends Controller
     $medicine->update($medicineData);
 
     return $this->success($medicine,null,200);
-}
 
-public function destroy($id)
-    {
+    }
+
+    public function destroy($id) {
         $medicine = Medicine::find($id);
 
-       
+
 
         $medicine->delete();
 
-        
+
         return $this->success($medicine,null,200);
     }
 

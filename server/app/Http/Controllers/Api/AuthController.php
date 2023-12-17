@@ -34,7 +34,10 @@ class AuthController extends Controller
                 return $this->error(null, $validator->errors(), 422);
             }
 
-            $user = Client::create($request->all());
+            $user = Client::create([
+                "firstName" => $request->input("firstName"),
+                "lastName" => $request->input("lastName")
+            ]);
 
         } else if ($userType == "pharmacy") {
 
@@ -48,15 +51,17 @@ class AuthController extends Controller
                 return $this->error(null, $validator->errors(), 422);
             }
 
-            $user = Pharmacy::create($request->all());
+            $user = Pharmacy::create([
+                "name" => $request->input("name")
+            ]);
 
         } else {
             return $this->error(null, "No User Type Selected.", 422);
         }
 
         User::create([
-            'email' => $user->email,
-            'password' => $user->password,
+            'email' => $request->input("email"),
+            'password' => $request->input("password"),
             'type' => $userType,
             'user_id' => $user->id
         ]);
