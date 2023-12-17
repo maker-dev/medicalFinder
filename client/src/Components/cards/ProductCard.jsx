@@ -1,6 +1,6 @@
 import React from "react";
 import bell_off from '../../Assets/Icons/bell_off.svg';
-import bell_on from '../../Assets/Icons/bell_on.svg';
+// import bell_on from '../../Assets/Icons/bell_on.svg';
 import  MedicineImg from '../../Assets/Icons/MedicineImg.svg';
 
 function ProductCard({ product }) {

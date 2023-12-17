@@ -8,7 +8,7 @@ const api = axios.create({
         'X-API-KEY': config.apiKey
     },
     validateStatus: function (status) {
-        return true;
+        return status < 500;
     }
 });
 

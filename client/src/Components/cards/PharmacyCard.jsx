@@ -11,7 +11,7 @@ export default function PharmacyCard( {pharmacy} ) {
             <img
               className="inset-0 h-full w-full object-cover object-center"
               src={pharmacy.image === null ? phaIcDefault : phaIcDefault}
-              alt="pharmacy image"
+              alt="pharmacy img"
             />
           </div>
 
