@@ -33,17 +33,18 @@ class MedicineController extends Controller
             'category'=>'required',
             'forAdult'=>'required'
         ]);
+        $medicineData = $request->all();
 
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->storeAs('storage/images', $imageName); 
+            $image->storeAs('public/images/imgMedicine/', $imageName); 
     
            
-            $request->merge(['image' => $imageName]);
+            $medicineData['image'] = $imageName;
         }
 
-        $medicine = Medicine::create($request->all());
+        $medicine = Medicine::create($medicineData);
 
        
         return $this->success($medicine,null,200);
@@ -51,35 +52,36 @@ class MedicineController extends Controller
 
     public function update(Request $request, $id)
 {
-    $medicine = Medicine::find($id);
+    $medicine = Medicine::findOrFail($id);
 
    
 
     $request->validate([
-        'name' => 'required',
+        'title' => 'required',
         'description' => 'required',
         'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         'category'=>'required',
         'forAdult'=>'required'
     ]);
 
+    $medicineData = $request->all();
     
-    if ($request->hasFile('image')) {
+    if ($request->has('image')) {
         
         if ($medicine->image) {
-            Storage::delete('storage/images/' . $medicine->image);
+            Storage::delete('public/images/imgMedicine' . $medicine->image);
         }
 
         
         $image = $request->file('image');
         $imageName = time() . '.' . $image->getClientOriginalExtension();
-        $image->storeAs('storage/images', $imageName); 
+        $image->storeAs('public/images/imgMedicine', $imageName); 
 
         
-        $request->merge(['image' => $imageName]);
+        $medicineData['image'] = $imageName;
     }
 
-    $medicine->update($request->all());
+    $medicine->update($medicineData);
 
     return $this->success($medicine,null,200);
 }
@@ -101,4 +103,6 @@ public function destroy($id)
         $medicines = Medicine::where('title', 'LIKE', '%' . $search . '%')->get();
         return $this->success($medicines, null, 200);
     }
+
+   
 }

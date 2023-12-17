@@ -19,10 +19,11 @@ use Illuminate\Support\Facades\Route;
 Route::get("/pharmacies", [PharmacyController::class, "index"]);
 Route::get("/pharmacies/{id}", [PharmacyController::class, "show"]);
 
+
+Route::post('/medicines', [MedicineController::class, 'store']);
 Route::get("/medicines", [MedicineController::class, "index"]);
 Route::get('/medicines/search',[MedicineController::class,'search']);
 Route::get("/medicines/{id}", [MedicineController::class, "show"]);
-Route::post('/medicines', [MedicineController::class, 'store']);
 Route::put('/medicines/{id}', [MedicineController::class, 'update']);
 Route::delete('/medicines/{id}', [MedicineController::class, 'destroy']);
 
