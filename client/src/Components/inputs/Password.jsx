@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export default function PasswordInput(props) {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const {placeholder, inputValue, onInputChange} = props; 
+  const {placeholder, inputValue, onInputChange, borderColor} = props; 
   function togglePasswordVisibility() {
     setIsPasswordVisible((prevState) => !prevState);
   }
@@ -14,8 +14,7 @@ export default function PasswordInput(props) {
         placeholder={placeholder}
         value={inputValue}
         onChange={(e) => onInputChange(e.target.value)}
-        className="w-full
-        py-3 pl-12 pr-4 text-gray-700 border rounded-md outline-none bg-white focus:bg-white focus:border-main-400"
+        className={'w-full py-3 pl-12 pr-4 text-gray-700 border rounded-md outline-none bg-white '+ borderColor +' focus:bg-white focus:border-main-400'}
       />
       <button type="button"
         className="absolute inset-y-0 right-0 flex items-center px-4 text-gray-600"
