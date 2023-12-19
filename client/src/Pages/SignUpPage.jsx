@@ -7,6 +7,7 @@
   import { Link, useNavigate } from "react-router-dom";
   import api from '../Api/api';
   import Loader from '../Components/ui/Loader';
+  import {successAlt} from '../utilities/Alerts';
 
   function SignUpPage() {
     const [userType, setUserType] = useState('client');
@@ -46,6 +47,7 @@
         setValidatePassword(response.data.message.password || []);
       }
       else{
+        successAlt("Account Created !")
         navigate("/login");
       }
       

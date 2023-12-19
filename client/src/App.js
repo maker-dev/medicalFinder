@@ -6,6 +6,8 @@ import SignUpPage from "./Pages/SignUpPage";
 import ListProductPage from "./Pages/ListProductPage";
 import ListPharmacyPage from "./Pages/ListPharmacyPage";
 import { useLayoutEffect } from "react";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import ErrorPage from "./Pages/ErrorPage";
 
 function App() {
@@ -27,6 +29,7 @@ function App() {
           {/* <Route path="/product/:id" element={<ProductPage product={product} />} /> */}
           <Route path="*" element={<ErrorPage/>} />
         </Routes>
+          <ToastContainer />
     </div>
 
   );

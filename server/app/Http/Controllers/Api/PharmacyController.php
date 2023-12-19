@@ -11,9 +11,18 @@ use Illuminate\Support\Facades\Storage;
 class PharmacyController extends Controller
 {
     use HttpResponses;
-    public function index()
+    public function index(Request $request)
     {
         $query = Pharmacy::query()->where("verified", true);
+
+        if ($request->input("search")) {
+            $query->where(function ($subquery) use ($request) {
+                $subquery->where('name', 'LIKE', '%' . $request->input("search") . '%');
+                         // Add more conditions as needed
+                         // ->orWhere('another_column', 'LIKE', '%' . $request->input("search") . '%');
+            });
+        }
+
         $pharmacies = $query->paginate(5);
 
         $pharmacies->each(function ($pharmacy) {
@@ -29,30 +38,7 @@ class PharmacyController extends Controller
         return $this->success($pharmacy, null, 200);
     }
 
-    public function delete($id){
-        $pharmacie=Pharmacy::findOrFail($id);
-        $pharmacie->delete();
-        return $this->success($pharmacie,null,200);
-    }
 
-    public function store(Request $request)
-    {
-        $request->validate([
-            'name' => 'required'
-        ]);
-
-        
-
-        $pharmacie = Pharmacy::create(['name' => $request->input('name')]);
-
-        return $this->success($pharmacie, null, 200);
-    }
-
-    public function edit($id)
-    {
-        $data = Pharmacy::findOrFail($id);
-        return $this->success($data, null, 200);
-    }
 
     public function update(Request $request, $id)
     {
@@ -86,4 +72,11 @@ class PharmacyController extends Controller
 
         return $this->success($pharmacie, null, 200);
     }
+
+    public function delete($id){
+        $pharmacie=Pharmacy::findOrFail($id);
+        $pharmacie->delete();
+        return $this->success($pharmacie,null,200);
+    }
+
 }
