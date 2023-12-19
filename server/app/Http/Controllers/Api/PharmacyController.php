@@ -48,11 +48,7 @@ class PharmacyController extends Controller
         return $this->success($pharmacie, null, 200);
     }
 
-    public function edit($id)
-    {
-        $data = Pharmacy::findOrFail($id);
-        return $this->success($data, null, 200);
-    }
+  
 
     public function update(Request $request, $id)
     {
