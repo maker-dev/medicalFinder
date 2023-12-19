@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Traits\HttpResponses;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use Ramsey\Uuid\Type\Integer;
 
 class MedicineController extends Controller
 {
@@ -47,6 +48,11 @@ class MedicineController extends Controller
 
        
         return $this->success($medicine,null,200);
+    }
+    public function edit(String $id){
+        $data=Medicine::findOrFail($id);
+        return $this->success($data,null,200);
+
     }
 
     public function update(Request $request, $id)
