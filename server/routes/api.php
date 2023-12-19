@@ -1,9 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\MedicineController;
 use App\Http\Controllers\Api\PharmacyController;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +17,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get("/pharmacies", [PharmacyController::class, "index"]);
-Route::get("/pharmacies/{id}", [PharmacyController::class, "show"]);
+Route::get("/pharmacie/{id}", [PharmacyController::class, "show"]);
+Route::get("/pharmacie/edit/{id}", [PharmacyController::class, "edit"]);
+Route::put("/pharmacie/{id}", [PharmacyController::class, "update"]);
+Route::post("/pharmacies", [PharmacyController::class, "store"]);
+Route::delete('/pharmacie/{id}',[PharmacyController::class,"delete"]);
 
 
 Route::post('/medicines', [MedicineController::class, 'store']);
