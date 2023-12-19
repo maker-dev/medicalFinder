@@ -7,8 +7,8 @@
   import { Link, useNavigate } from "react-router-dom";
   import api from '../Api/api';
   import Loader from '../Components/ui/Loader';
-  import {successAlt} from '../utilities/Alerts';
-
+  import {successAlt,errAlt} from '../utilities/Alerts';
+    
   function SignUpPage() {
     const [userType, setUserType] = useState('client');
     const [name, setName] = useState("");
@@ -18,6 +18,7 @@
     const [password, setPassword] = useState("");
     const [password_confirmation, setPassword_confirmation] = useState("");
     const [loading, setLoading] = useState(false);
+    const [agreeTerms, setAgreeTerms] = useState(false);
     const navigate = useNavigate();
 
     //validation errors states:
@@ -31,28 +32,35 @@
 
     const handleUserTypeChange = (e) => {
       setUserType(e.target.value);
-    };
+    }
 
-
+    const handleCheck = () => {
+      setAgreeTerms(!agreeTerms)
+    }
     const signUpUser = async (e) => {
-      setLoading(true);
-      e.preventDefault();
-      const response = await api.post('register', JSON.stringify({userType,name, firstName, lastName, email, password, password_confirmation}));
-      
-      if(response.status === 422){
-        setValidateName(response.data.message.name || []);
-        setValidateFirstName(response.data.message.firstName || []);
-        setValidateLastName(response.data.message.lastName || []);
-        setValidateEmail(response.data.message.email || []);
-        setValidatePassword(response.data.message.password || []);
+      if(agreeTerms){
+        setLoading(true);
+        e.preventDefault();
+        const response = await api.post('register', JSON.stringify({userType,name, firstName, lastName, email, password, password_confirmation}));
+        if(response.status === 422){
+          setValidateName(response.data.message.name || []);
+          setValidateFirstName(response.data.message.firstName || []);
+          setValidateLastName(response.data.message.lastName || []);
+          setValidateEmail(response.data.message.email || []);
+          setValidatePassword(response.data.message.password || []);
+        }
+        else if (response.status === 200) {
+          successAlt("Account Created !")
+          navigate("/login");
+        }
+        
+        
+        setLoading(false);
+      }else{
+        e.preventDefault();
+        errAlt("You didn't agree with our Terms and conditions.");
       }
-      else if (response.status === 200) {
-        successAlt("Account Created !")
-        navigate("/login");
-      }
-      
-      
-      setLoading(false);
+     
     }
 
     return (
@@ -174,11 +182,11 @@
 
               
       <div className="mb-4 flex items-center">
-      <input name="checkbox-agree" type="checkbox" value="" className="w-4 h-4 text-main-400 bg-gray-100  rounded focus:ring-main-400 dark:focus:ring-main-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-main-600"/>
+      <input name="checkbox-agree" checked={agreeTerms} onChange={handleCheck}  type="checkbox" value="" className="w-4 h-4 text-main-400 bg-gray-100  rounded focus:ring-main-400 dark:focus:ring-main-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-main-600"/>
       <label htmlFor="checkbox-agree" className="ms-2 text-sm ">I agree with the <a href="agree.com" className="text-main-400 hover:underline">terms and conditions</a>.</label>
       </div>
       <div className="flex items-center justify-between">
-        <Button text="Sign Up" onBtnClick={signUpUser}></Button>
+        <Button text="Sign Up" onBtnClick={signUpUser} disabled={!agreeTerms}></Button>
       </div>
       <div className="inline-flex items-center justify-center w-full">
       <hr className="w-full h-px my-8 bg-slate-900 border-0 "/>
