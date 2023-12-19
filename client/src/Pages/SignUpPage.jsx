@@ -46,7 +46,7 @@
         setValidateEmail(response.data.message.email || []);
         setValidatePassword(response.data.message.password || []);
       }
-      else{
+      else if (response.status === 200) {
         successAlt("Account Created !")
         navigate("/login");
       }

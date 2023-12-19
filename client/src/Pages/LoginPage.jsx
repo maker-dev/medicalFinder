@@ -1,12 +1,48 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from "../Components/ui/Navbar";
 import Text  from '../Components/inputs/Text';
 import Password from '../Components/inputs/Password';
 import Button from '../Components/inputs/Button';
 import Footer from '../Components/Footer';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import api from '../Api/api.js';
+import Loader from '../Components/ui/Loader';
+import {successAlt} from '../utilities/Alerts.js';
 
 function LoginPage() {
+
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+
+    //validation errors states:
+    const [validateEmail, setValidateEmail] = useState([]);
+    const [validatePassword, setValidatePassword] = useState([]);
+    const [validateCredentials, setValidateCredentials] = useState("");
+
+  const loginUser = async (e) => {
+    setLoading(true);
+    setValidateEmail([]);
+    setValidatePassword([]);
+    setValidateCredentials("");
+    e.preventDefault();
+    const response = await api.post("login", JSON.stringify({email, password}));
+
+    if(response.status === 422){
+      setValidateEmail(response.data.message.email || []);
+      setValidatePassword(response.data.message.password || []);
+    } else if (response.status === 401) {
+      setValidateCredentials(response.data.message);
+    } else if (response.status === 200) {
+      successAlt("logged in !")
+      navigate("/");
+
+    }
+    
+    setLoading(false);
+  }
+
   return (
     <>
 
@@ -17,24 +53,39 @@ function LoginPage() {
             <h1 className="text-center font-black text-4xl">Login</h1>
             <h2 className="text-center  text-xl mt-2 mb-4">Welcome Back !</h2> 
             <div className="mb-4">
+              {
+                validateCredentials &&
+                <p  className="text-red-500 font-thin mt-1">
+                    {validateCredentials}
+                </p>
+              }
               <Text
                 type="email"
                 size="full"
                 name="email"
                 placeholder="E-mail*"
+                inputValue={email}
+                onInputChange={setEmail}
+                borderColor={ validateEmail.length === 0  ? "":"border-red-500 focus:border-red-500"}
               />
+              {validateEmail.length > 0  && validateEmail.map((errorFirstName,index) => {return(<p key={index} className="text-red-500 font-thin mt-1">{errorFirstName}</p>)})}
             </div>
             <div className="mb-4">
               <Password 
               name="password"
-              placeholder="Password*" />
+              placeholder="Password*"
+              inputValue={password}
+              onInputChange={setPassword}
+              borderColor={ validatePassword.length === 0 ? "":"border-red-500 focus:border-red-500"}
+              />
+              {validatePassword.length > 0  && validatePassword.map((errorPassword,index) => {return(<p key={index} className="text-red-500 font-thin mt-1">{errorPassword}</p>)})}
             </div>
             
     <div className="mb-4 flex items-center">
         <a href="#" className="text-main-400 hover:underline">Forgot password?</a>
     </div>
     <div className="flex items-center justify-between">
-      <Button text="Login"></Button>
+      <Button onBtnClick={loginUser} text="Login"></Button>
     </div>
     <div className="inline-flex items-center justify-center w-full">
     <hr className="w-full h-px my-8 bg-slate-900 border-0 "/>
@@ -100,6 +151,7 @@ function LoginPage() {
   </form>
         </div>
       </div>
+      {loading && <Loader />}
       <Footer />
     </>
   )
