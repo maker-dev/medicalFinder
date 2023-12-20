@@ -97,7 +97,9 @@ class AuthController extends Controller
             $userInfo = Admin::find($user->user_id);
         }
 
-        $token = $user->createToken("token")->plainTextToken;
+        $expiresAt = now()->addDays(7); // 1 week
+
+        $token = $user->createToken("token", ["*"], $expiresAt)->plainTextToken;
 
         $cookie = cookie("jwt", $token, 7 * 24 * 60); // 1 week
 
