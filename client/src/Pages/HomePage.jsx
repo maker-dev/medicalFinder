@@ -5,10 +5,8 @@ import CategoriesSection from "../Components/homepage/CategoriesSection";
 import Header from "../Components/Header";
 import HowItWorkSection from "../Components/homepage/HowItWorkSection";
 
-
-
-
 function HomePage() {
+  
   return (
     <>
       <Header />

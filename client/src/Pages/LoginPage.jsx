@@ -8,10 +8,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import api from '../Api/api.js';
 import Loader from '../Components/ui/Loader';
 import {successAlt} from '../utilities/Alerts.js';
+import { useAuth } from '../global/Auth.js';
 
 function LoginPage() {
 
   const navigate = useNavigate();
+  const {setUser, setUserType} = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -35,6 +37,8 @@ function LoginPage() {
     } else if (response.status === 401) {
       setValidateCredentials(response.data.message);
     } else if (response.status === 200) {
+      setUser(response.data.data.user);
+      setUserType(response.data.data.userType);
       successAlt("logged in !")
       navigate("/");
 

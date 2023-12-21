@@ -1,17 +1,35 @@
 import React, { useState } from 'react'
 import logo from '../../Assets/Icons/Logo.svg'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import {useAuth} from '../../global/Auth.js';
+import api from '../../Api/api.js';
+import Loader from './Loader.jsx';
+import {errAlt} from '../../utilities/Alerts.js';
 
 function Navbar() {
 
     const [state, setState] = useState(false);
+    const navigate = useNavigate();
+    const {userType, setUser, setUserType} = useAuth();
+    const [loading, setLoading] = useState(false);
 
+    const logOut = async () => {
+        setLoading(true);
+        await api.post("logout");
+        setUser(null);
+        setUserType(null);
+        setLoading(false);
+        errAlt("logged out !");
+        navigate("/");
+    }
+    
     const navigation = [
         { title: "Home", path: "/home" },
         { title: "Pharmacies", path: "/pharmacies" },
         { title: "Products", path: "/products" }
     ];
   return (
+    <>
     <nav className="border-b w-full fixed top-0 bg-gray-50 md:text-sm md:border-none z-50 bg-opacity-95">
         <div className="items-center px-4 max-w-screen-xl mx-auto md:flex md:px-8">
                 <div className="flex items-center justify-between py-3 md:py-5 md:block">
@@ -56,21 +74,36 @@ function Navbar() {
                         }
                         <span className='hidden w-px h-6 bg-gray-300 md:block'></span>
                         <div className='space-y-3 items-center gap-x-6 md:flex md:space-y-0'>
-                            <li>
-                                <Link to={"/login"} className='block py-3 text-center text-gray-700 hover:text-main-400 border rounded-lg md:border-none'>
-                                    Log in
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to={"/register"} className='block py-3 px-4 font-medium text-center text-white bg-gray-900 hover:bg-main-400 active:bg-main-400 active:shadow-none rounded-lg shadow md:inline'>
-                                    Sign Up
-                                </Link>
-                            </li>
+                            {
+                                !userType &&
+                            <>
+                                <li>
+                                    <Link to={"/login"} className='block py-3 text-center text-gray-700 hover:text-main-400 border rounded-lg md:border-none'>
+                                        Log in
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to={"/register"} className='block py-3 px-4 font-medium text-center text-white bg-gray-900 hover:bg-main-400 active:bg-main-400 active:shadow-none rounded-lg shadow md:inline'>
+                                        Sign Up
+                                    </Link>
+                                </li>
+                            </>
+                            }
+                            {
+                                userType && 
+                                <li>
+                                    <button onClick={logOut} className='block py-3 px-4 font-medium text-center text-white bg-gray-900 hover:bg-red-600 active:bg-red-600 active:shadow-none rounded-lg shadow md:inline'>
+                                        LogOut
+                                    </button>
+                                </li>
+                            }
                         </div>
                     </ul>
                 </div>
             </div>
     </nav>
+    {loading && <Loader />}
+    </>
   )
 }
 
