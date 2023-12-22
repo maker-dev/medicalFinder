@@ -58,11 +58,7 @@ class MedicineController extends Controller
 
         return $this->success($medicine,null,200);
     }
-    public function edit(String $id){
-        $data=Medicine::findOrFail($id);
-        return $this->success($data,null,200);
-
-    }
+  
 
     public function update(Request $request, $id)
 {

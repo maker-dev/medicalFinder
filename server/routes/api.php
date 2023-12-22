@@ -18,8 +18,9 @@ use App\Http\Controllers\Api\PharmacyController;
 
 Route::get("/pharmacies", [PharmacyController::class, "index"]);
 Route::get("/pharmacies/{id}", [PharmacyController::class, "show"]);
+Route::post('/pharmacies', [PharmacyController::class, 'store']);
 Route::put("/pharmacies/{id}", [PharmacyController::class, "update"]);
-Route::delete('/pharmacies/{id}',[PharmacyController::class,"delete"]);
+Route::delete('/pharmacies/{id}',[PharmacyController::class,"destroy"]);
 
 
 Route::get("/medicines", [MedicineController::class, "index"]);
