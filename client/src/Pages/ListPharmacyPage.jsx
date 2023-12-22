@@ -13,14 +13,20 @@ import ReactPaginate from 'react-paginate';
 function ListPharmacyPage() {
 
   const [pharmaciesPagination, setPharmaciesPagination] = useState();
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     getPharmaciesData();
   }, [])
 
-  const getPharmaciesData = async (pageNumber = 1) => {
+  const onSearchClick = (e) => {
+    e.preventDefault();
+    getPharmaciesData(1, search);
+  }
+
+  const getPharmaciesData = async (pageNumber = 1, search = "") => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    const endPoint = `pharmacies?page=${pageNumber}`;
+    const endPoint = `pharmacies?page=${pageNumber}&search=${search}`;
     const response = await api.get(endPoint);
     setPharmaciesPagination(response.data.data);
   }
@@ -33,7 +39,7 @@ function ListPharmacyPage() {
         <ResultBar results={pharmaciesPagination && pharmaciesPagination.total}/>
         <div className="  my-4 gap-4 grid   grid-cols-12">
           <div className="lg:col-start-1 lg:col-span-3 col-span-12 flex flex-col items-center gap-5 ">
-            <SideBarCard />
+            <SideBarCard search={search} setSearch={setSearch} onSearchClick={onSearchClick}/>
             <PopularCard text={"GET DAILY UPDATE"} button={"SUBSCRIBE"} />
           </div>
           <div className="  col-span-12  lg:col-span-9 flex flex-col gap-4 ">
@@ -46,13 +52,13 @@ function ListPharmacyPage() {
             {/*"pagination design"*/}
             <div className='mb-5'>
           {
-            pharmaciesPagination &&
+            (pharmaciesPagination && pharmaciesPagination.total > 5) &&
             <ReactPaginate
               forcePage={pharmaciesPagination.current_page - 1}
               pageCount={Math.ceil(pharmaciesPagination.total / pharmaciesPagination.per_page)}
               itemsPerPage={pharmaciesPagination.per_page}
               onPageChange={(pageNumber) => getPharmaciesData(pageNumber.selected + 1)}
-              pageRangeDisplayed={5}
+              pageRangeDisplayed={3}
               marginPagesDisplayed={2}
               containerClassName="flex justify-center mt-8"
               pageClassName="mx-2 px-3 py-2  hover:text-main-400 transition-colors duration-300"
