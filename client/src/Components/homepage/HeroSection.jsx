@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import backgroundImage from "../../Assets/Icons/bg.svg";
 import pillImage from "../../Assets/Icons/Pill.svg";
+import { useNavigate } from "react-router-dom";
 function HeroSection() {
+
+  const navigate = useNavigate();
+
+  const [search, setSearch] = useState("");
+
+  const goToListProductsPage = (e) => {
+    e.preventDefault();
+    navigate("/products", {state: search})
+  }
+
+
   return (
     <div className="w-full h-screen flex flex-col justify-center items-center gap-6" style={{ backgroundImage: `url(${backgroundImage})` }}  >
       <div className="flex flex-col md:w-1/2 items-center gap-3">
@@ -39,10 +51,12 @@ function HeroSection() {
               placeholder="Search for Medications..."
               name=""
               id=""
+              value={search}
+              onChange={e => setSearch(e.target.value)}
               className='w-full py-3 pl-12 pr-4 text-gray-700 border rounded-md outline-none bg-white focus:bg-white focus:border-main-400'
             />
           </div>
-          <button className="bg-main-400 hover:bg-main-500 active:bg-main-600 w-16 h-11 flex items-center justify-center rounded-md"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></button>
+          <button onClick={goToListProductsPage} className="bg-main-400 hover:bg-main-500 active:bg-main-600 w-16 h-11 flex items-center justify-center rounded-md"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></button>
         </div>
         </form>
         <div className="text-center">

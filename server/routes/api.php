@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\Api\AuthController;
-use App\Http\Controllers\Api\MedicineController;
-use App\Http\Controllers\Api\PharmacyController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\InscriptionRequestController;
+use App\Http\Controllers\Api\MedicineController;
+use App\Http\Controllers\Api\MedicineRequestController;
+use App\Http\Controllers\Api\PharmacyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,16 +20,27 @@ use Illuminate\Support\Facades\Route;
 
 Route::get("/pharmacies", [PharmacyController::class, "index"]);
 Route::get("/pharmacies/{id}", [PharmacyController::class, "show"]);
+Route::post('/pharmacies', [PharmacyController::class, 'store']);
+Route::put("/pharmacies/{id}", [PharmacyController::class, "update"]);
+Route::delete('/pharmacies/{id}',[PharmacyController::class,"destroy"]);
 
 
-Route::post('/medicines', [MedicineController::class, 'store']);
+Route::post('/medicineRequest',[MedicineRequestController::class,"store"]);
+Route::put('/medicineRequest/{id}',[MedicineRequestController::class,"update"]);
+Route::delete('/medicineRequest/{id}',[MedicineRequestController::class,"destroy"]);
+
+Route::post('/inscriptionRequest',[InscriptionRequestController::class,"store"]);
+Route::delete('/inscriptionRequest/{id}',[InscriptionRequestController::class,"destroy"]);
+
+
 Route::get("/medicines", [MedicineController::class, "index"]);
-Route::get('/medicines/search',[MedicineController::class,'search']);
-Route::get("/medicines/{id}", [MedicineController::class, "show"]);
-Route::put('/medicines/{id}', [MedicineController::class, 'update']);
+Route::get("/medicine/{id}", [MedicineController::class, "show"]);
+Route::post('/medicines', [MedicineController::class, 'store']);
+Route::put('/medicine/{id}', [MedicineController::class, 'update']);
 Route::delete('/medicines/{id}', [MedicineController::class, 'destroy']);
 
 Route::post("/register", [AuthController::class, "register"]);
+Route::get("/checkCookie", [AuthController::class, "checkCookie"]);
 Route::post("/login", [AuthController::class, "login"]);
 
 Route::middleware("auth:sanctum")->group(function () {

@@ -27,7 +27,7 @@ export default function PharmacyCard( {pharmacy} ) {
                 <span className="text-inherit">Operating Hours : </span>{FormatAmPm(pharmacy.opening_time)} - {FormatAmPm(pharmacy.closing_time)}
               </p>
               <p className="font-bold text-sm leading-tight truncate">
-                <span className="text-inherit">Rating : </span>nothing for now
+                <span className="text-inherit">Rating : </span>{pharmacy.ratings ? `${pharmacy.ratings} / 5` : "no ratings yet" }
               </p>
             </div>
 

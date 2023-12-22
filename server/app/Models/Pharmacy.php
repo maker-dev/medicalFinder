@@ -49,4 +49,16 @@ class Pharmacy extends Model
                 ->withPivot("comment");
     }
 
+    public function averageRating()
+    {
+        $totalRatings = $this->ratings()->count();
+
+        if ($totalRatings > 0) {
+            // Calculate the average rating using the average aggregate function
+            return $this->ratings()->avg('ratings.rating');
+        }
+
+        return 0; // No ratings yet, return a default value (e.g., 0)
+    }
+
 }

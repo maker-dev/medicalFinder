@@ -97,14 +97,21 @@ class AuthController extends Controller
             $userInfo = Admin::find($user->user_id);
         }
 
-        $token = $user->createToken("token")->plainTextToken;
+        $expiresAt = now()->addDays(7); // 1 week
+
+        $token = $user->createToken("token", ["*"], $expiresAt)->plainTextToken;
 
         $cookie = cookie("jwt", $token, 7 * 24 * 60); // 1 week
 
         return $this->success([
+            'userType' => $user->type,
             'user'  => $userInfo
         ], "Login successfully.", 200)->withCookie($cookie);
 
+    }
+
+    public function checkCookie(Request $request) {
+        return $this->success(['exists' => $request->hasCookie("jwt")], "cookies exists !", 200);
     }
 
     public function user() {
@@ -113,8 +120,12 @@ class AuthController extends Controller
             $userInfo = Client::find($user->id);
         } else if ($user->type == "pharmacy") {
             $userInfo = Pharmacy::find($user->id);
+        } else if ($user->type == "admin") {
+            $userInfo = Admin::find($user->id);
         }
+
         return $this->success([
+            'userType' => $user->type,
             'user' => $userInfo
         ], "Data received successfully.", 200);
     }

@@ -2,7 +2,7 @@ import { cities, customer_rating } from "../../data/data";
 import Button from "../inputs/Button";
 import React,{ useState } from "react";
 
-export default function SideBarCard(){
+export default function SideBarCard({search, setSearch, onSearchClick}){
 
     //array for tiquettes filter
     const [cityArr,setCityArr] = useState([]);
@@ -24,6 +24,7 @@ export default function SideBarCard(){
             event.preventDefault();
             setCityArr([]);
             setCustmerArr([]);
+            setSearch("");
     }
     // clear city the filter tickets
     const clearTickets = (setArr)=>{
@@ -40,7 +41,7 @@ export default function SideBarCard(){
             <div className="bg-white  p-4">
                 <div className="w-full mt-4">
                     <h1 className="text-secondary text-lg font-black ">Search</h1>
-                    <input type="search" name="searchField" placeholder="Type pill Pharmacy and more..."  className="bg-gray-200 w-full placeholder-slate-800 rounded-lg text-xs p-2"/>
+                    <input type="search" value={search} onChange={e => setSearch(e.target.value)} name="searchField" placeholder="Type pill Pharmacy and more..."  className="bg-gray-200 w-full placeholder-slate-800 rounded-lg text-xs p-2"/>
                 </div>
                 <div className="w-full mt-2">
                     <div className="flex justify-between w-full lg:w-10/12 mt-6">
@@ -101,7 +102,9 @@ export default function SideBarCard(){
                 <div className="my-6">
                     <Button 
                     size='full'
-                    text="Search"></Button>
+                    text="Search"
+                    onBtnClick={onSearchClick}
+                    ></Button>
                 </div>
             </div>
         </div>
