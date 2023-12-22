@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\InscriptionRequestController;
 use App\Http\Controllers\Api\MedicineController;
+use App\Http\Controllers\Api\MedicineRequestController;
 use App\Http\Controllers\Api\PharmacyController;
 
 /*
@@ -21,6 +23,14 @@ Route::get("/pharmacies/{id}", [PharmacyController::class, "show"]);
 Route::post('/pharmacies', [PharmacyController::class, 'store']);
 Route::put("/pharmacies/{id}", [PharmacyController::class, "update"]);
 Route::delete('/pharmacies/{id}',[PharmacyController::class,"destroy"]);
+
+
+Route::post('/medicineRequest',[MedicineRequestController::class,"store"]);
+Route::put('/medicineRequest/{id}',[MedicineRequestController::class,"update"]);
+Route::delete('/medicineRequest/{id}',[MedicineRequestController::class,"destroy"]);
+
+Route::post('/inscriptionRequest',[InscriptionRequestController::class,"store"]);
+Route::delete('/inscriptionRequest/{id}',[InscriptionRequestController::class,"destroy"]);
 
 
 Route::get("/medicines", [MedicineController::class, "index"]);
