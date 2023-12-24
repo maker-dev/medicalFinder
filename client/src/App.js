@@ -10,6 +10,7 @@ import { useLayoutEffect } from "react";
 import { ToastContainer } from 'react-toastify';
 import ErrorPage from "./Pages/ErrorPage";
 import Auth from "./global/Auth";
+import ProductPage from "./Pages/ProductPage.jsx";
 import AdminRoutes from "./protectedRoutes/AdminRoutes.js";
 import GuestRoutes from './protectedRoutes/GuestRoutes';
 import 'react-toastify/dist/ReactToastify.css';
@@ -36,7 +37,7 @@ function App() {
           <Route element={<AdminRoutes />}>
             <Route path="/dashboard" element={<AdminDashboard />} />
           </Route>
-          {/* <Route path="/product/:id" element={<ProductPage product={product} />} /> */}
+          { <Route path="/product/:id" element={<ProductPage /*product={product}*/ />} /> }
           <Route path="*" element={<ErrorPage/>} />
         </Routes>
         <ToastContainer />
