@@ -8,7 +8,7 @@ import FooterBottom from '../Components/ui/FooterBottom';
 import ProductCard from '../Components/cards/ProductCard';
 import api from '../Api/api';
 import ReactPaginate from 'react-paginate';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 function ListProductPage() {
   const location = useLocation();
@@ -23,7 +23,12 @@ function ListProductPage() {
       getMedicinesData();
     }
   }, [])
-
+  const navigate = useNavigate();
+  const handleProductClick = (productId) => {
+    // Navigate to the product details page
+    
+    navigate(`/product/${productId}`);
+  };
 
   const onSearchClick = (e) => {
     e.preventDefault();
@@ -51,11 +56,11 @@ function ListProductPage() {
           <SubscribeBar />
           <div className='grid md:grid-cols-2 items-center justify-center gap-12'>
           {medicinesPagination && medicinesPagination.data.map((product) => {
-            return <ProductCard key={product.id} product={product} />;
+            return <ProductCard key={product.id} product={product} isVertical={true} onClick={() => handleProductClick(product.id)} />;
           })}
           </div>
 
-          {/*"pagination design"*/}
+          {/*pagination design*/}
           <div className='mb-5'>
           {
             (medicinesPagination && medicinesPagination.total > 6) &&
@@ -87,4 +92,4 @@ function ListProductPage() {
   )
 }
 
-export default ListProductPage
+export default ListProductPage;
