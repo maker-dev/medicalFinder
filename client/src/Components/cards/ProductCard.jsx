@@ -2,16 +2,12 @@ import React from "react";
 import bell_off from '../../Assets/Icons/bell_off.svg';
 import bell_on from '../../Assets/Icons/bell_on.svg';
 import  MedicineImg from '../../Assets/Icons/MedicineImg.svg';
+import IsProductNew from '../../helpers/IsProductNew';
 
 function ProductCard({ product }) {
-  const created_at = new Date(product.created_at);
-  const oneWeekInMilliseconds = 7 * 24 * 60 * 60 * 1000; // One week in milliseconds
-  const currentDate = new Date();
   
-  var isNew;
+  var isNew = IsProductNew(product.created_at, 7);
 
-  if (currentDate - created_at < oneWeekInMilliseconds) isNew = true
-  else isNew = false;
 
   return (
     <>
