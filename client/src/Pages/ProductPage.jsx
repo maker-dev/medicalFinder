@@ -1,8 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import Navbar from "../Components/ui/Navbar";
 import { useParams } from 'react-router-dom';
-import  MedicineImg from '../Assets/Icons/MedicineImg.svg';
-import bell_off from '../Assets/Icons/bell_off.svg';
 import FooterBottom from '../Components/ui/FooterBottom';
 import ReactPaginate from 'react-paginate';
 import api from '../Api/api';
@@ -11,21 +9,25 @@ import ProductCard from '../Components/cards/ProductCard';
 
 function ProductPage() {
   const { id } = useParams();
+
   const [product, setProduct] = useState({});
-
-
-  
-
   const [pharmaciesPagination, setPharmaciesPagination] = useState();
   
 
   useEffect(() => {
-    getPharmaciesData();
+    getPharmaciesData(id, 1);
+    getMedicineData(id);
   }, [])
 
-  const getPharmaciesData = async (pageNumber = 1, search = "") => {
+  const getMedicineData = async (id) => {
+    const endPoint = `medicine/${id}`;
+    const response = await api.get(endPoint);
+    setProduct(response.data.data);
+  }
+
+  const getPharmaciesData = async (id, pageNumber = 1) => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    const endPoint = `pharmacies?page=${pageNumber}`;
+    const endPoint = `medicine/${id}/pharmacies?page=${pageNumber}`;
     const response = await api.get(endPoint);
     setPharmaciesPagination(response.data.data);
   }
@@ -48,7 +50,7 @@ function ProductPage() {
      {/*pagination design*/}
      <div className='mb-5'>
           {
-            (pharmaciesPagination && pharmaciesPagination.total > 5) &&
+            (pharmaciesPagination && pharmaciesPagination.total > 3) &&
             <ReactPaginate
               forcePage={pharmaciesPagination.current_page - 1}
               pageCount={Math.ceil(pharmaciesPagination.total / pharmaciesPagination.per_page)}
