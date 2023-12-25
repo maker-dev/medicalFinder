@@ -16,8 +16,8 @@ function ProductPage() {
   
 
   useEffect(() => {
-    getPharmaciesData(id, 1);
-    getMedicineData(id, coordinates.latitude, coordinates.longitude);
+    getPharmaciesData(id, coordinates.latitude, coordinates.longitude, 1);
+    getMedicineData(id);
   }, [])
 
   const getMedicineData = async (id) => {
@@ -63,7 +63,7 @@ function ProductPage() {
               forcePage={pharmaciesPagination.current_page - 1}
               pageCount={Math.ceil(pharmaciesPagination.total / pharmaciesPagination.per_page)}
               itemsPerPage={pharmaciesPagination.per_page}
-              onPageChange={(pageNumber) => getPharmaciesData(pageNumber.selected + 1)}
+              onPageChange={(pageNumber) => getPharmaciesData(id,coordinates.latitude, coordinates.longitude, pageNumber.selected + 1)}
               pageRangeDisplayed={3}
               marginPagesDisplayed={2}
               containerClassName="flex justify-center mt-8"
