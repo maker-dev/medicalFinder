@@ -102,11 +102,24 @@ class MedicineController extends Controller
         return $this->success($medicine,null,200);
     }
 
-    public function medicinePharmacies($id) {
-
+    public function medicinePharmacies(Request $request, $id) {
         $medicine = Medicine::find($id);
-        $pharmacies = $medicine->pharmacies()->paginate(3);
 
+        // Retrieve user coordinates from the request
+        $userLatitude = $request->input('user_latitude');
+        $userLongitude = $request->input('user_longitude');
+
+        // Retrieve paginated pharmacies associated with the medicine
+        $pharmacies = $medicine->pharmacies()
+            ->selectRaw('*, (6371 * acos(cos(radians(?)) * cos(radians(location->>"$.latitude")) * cos(radians(location->>"$.longitude") - radians(?)) + sin(radians(?)) * sin(radians(location->>"$.latitude")))) AS distance')
+            ->orderBy('distance')
+            ->addBinding($userLatitude, 'select')
+            ->addBinding($userLongitude, 'select')
+            ->addBinding($userLatitude, 'select')
+            ->paginate(3);
+
+        // Return a success response with the paginated pharmacies data
         return $this->success($pharmacies, null, 200);
     }
+
 }

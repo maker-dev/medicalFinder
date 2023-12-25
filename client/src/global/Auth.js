@@ -6,11 +6,14 @@ const AuthContext = createContext();
 
 function Auth({children}) {
   const [user, setUser] = useState(null);
+  const [coordinates, setCoordinates] = useState({});
+
 
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("auth"))) {
       fetchUser();
     }
+    handleGetLocation();
   }, []);
 
   const fetchUser = async () => {
@@ -23,9 +26,27 @@ function Auth({children}) {
     }
   };
 
+  const handleGetLocation = () => {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          setCoordinates({ latitude, longitude });
+        },
+        (error) => {
+          console.error('Error getting location:', error.message);
+        }
+      );
+    } else {
+      console.error('Geolocation is not supported by your browser');
+    }
+  };
+
   const values = {
     user,
-    setUser
+    setUser,
+    coordinates,
+    setCoordinates
   };
 
   return (

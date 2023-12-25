@@ -6,17 +6,18 @@ import ReactPaginate from 'react-paginate';
 import api from '../Api/api';
 import PharmacyCard from "../Components/cards/PharmacyCard";
 import ProductCard from '../Components/cards/ProductCard';
+import { useAuth } from '../global/Auth';
 
 function ProductPage() {
   const { id } = useParams();
-
+  const {coordinates} = useAuth();
   const [product, setProduct] = useState({});
   const [pharmaciesPagination, setPharmaciesPagination] = useState();
   
 
   useEffect(() => {
     getPharmaciesData(id, 1);
-    getMedicineData(id);
+    getMedicineData(id, coordinates.latitude, coordinates.longitude);
   }, [])
 
   const getMedicineData = async (id) => {
@@ -25,9 +26,9 @@ function ProductPage() {
     setProduct(response.data.data);
   }
 
-  const getPharmaciesData = async (id, pageNumber = 1) => {
+  const getPharmaciesData = async (id, $latitude, $longitude, pageNumber = 1) => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    const endPoint = `medicine/${id}/pharmacies?page=${pageNumber}`;
+    const endPoint = `medicine/${id}/pharmacies?page=${pageNumber}&user_latitude=${$latitude}&user_longitude=${$longitude}`;
     const response = await api.get(endPoint);
     setPharmaciesPagination(response.data.data);
   }
