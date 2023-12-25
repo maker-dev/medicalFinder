@@ -4,8 +4,8 @@ import { useAuth } from '../global/Auth.js';
 import HomePage from '../Pages/HomePage.jsx';
 
 function ClientRoutes() {
-    const {userType} = useAuth();
-    return userType === null ? <Outlet /> : <HomePage />
+    const {user} = useAuth();
+    return user === null ? <Outlet /> : <HomePage />
 }
 
 export default ClientRoutes;

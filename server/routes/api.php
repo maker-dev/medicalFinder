@@ -38,9 +38,9 @@ Route::get("/medicine/{id}", [MedicineController::class, "show"]);
 Route::post('/medicines', [MedicineController::class, 'store']);
 Route::put('/medicine/{id}', [MedicineController::class, 'update']);
 Route::delete('/medicines/{id}', [MedicineController::class, 'destroy']);
+Route::get("/medicine/{id}/pharmacies", [MedicineController::class, "medicinePharmacies"]);
 
 Route::post("/register", [AuthController::class, "register"]);
-Route::get("/checkCookie", [AuthController::class, "checkCookie"]);
 Route::post("/login", [AuthController::class, "login"]);
 
 Route::middleware("auth:sanctum")->group(function () {

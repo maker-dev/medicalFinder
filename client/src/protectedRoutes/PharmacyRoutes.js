@@ -4,10 +4,10 @@ import { useAuth } from '../global/Auth.js';
 import LoginPage from '../Pages/LoginPage.jsx';
 
 function PharmacyRoutes() {
-    const {userType} = useAuth();
-    if (userType === null) {
+    const {user} = useAuth();
+    if (user === null) {
         return <LoginPage />
-    } else if (userType == "pharmacy") {
+    } else if (user.type == "pharmacy") {
         return <Outlet />
     } else {
         return <HomePage />

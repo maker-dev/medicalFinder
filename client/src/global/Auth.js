@@ -6,36 +6,47 @@ const AuthContext = createContext();
 
 function Auth({children}) {
   const [user, setUser] = useState(null);
-  const [userType, setUserType] = useState(null);
+  const [coordinates, setCoordinates] = useState({});
+
 
   useEffect(() => {
-    checkCookie().then(res => {
-      if (res) {
-        fetchUser();
-      }
-    })
+    if (JSON.parse(localStorage.getItem("auth"))) {
+      fetchUser();
+    }
+    handleGetLocation();
   }, []);
-
-  const checkCookie = async () => {
-    const response = await api.get("checkCookie");
-    return response.data.data.exists;
-  }
 
   const fetchUser = async () => {
     try {
       const response = await api.get("user")
       setUser(response.data.data.user);
-      setUserType(response.data.data.userType);
     } catch (error) {
+      localStorage.setItem("auth", JSON.stringify(false));
       console.error('Error fetching user:', error);
+    }
+  };
+
+  const handleGetLocation = () => {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          setCoordinates({ latitude, longitude });
+        },
+        (error) => {
+          console.error('Error getting location:', error.message);
+        }
+      );
+    } else {
+      console.error('Geolocation is not supported by your browser');
     }
   };
 
   const values = {
     user,
-    userType,
     setUser,
-    setUserType
+    coordinates,
+    setCoordinates
   };
 
   return (

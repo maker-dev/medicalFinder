@@ -5,10 +5,10 @@ import LoginPage from '../Pages/LoginPage.jsx';
 import HomePage from '../Pages/HomePage.jsx';
 
 function AdminRoutes() {
-    const {userType} = useAuth();
-    if (userType === null) {
+    const {user} = useAuth();
+    if (user === null) {
         return <LoginPage />
-    } else if (userType == "admin") {
+    } else if (user.type == "admin") {
         return <Outlet />
     } else {
         return <HomePage />

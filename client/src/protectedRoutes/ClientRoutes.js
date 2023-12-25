@@ -5,10 +5,10 @@ import LoginPage from '../Pages/LoginPage.jsx';
 import HomePage from '../Pages/HomePage.jsx';
 
 function ClientRoutes() {
-    const {userType} = useAuth();
-    if (userType === null) {
+    const {user} = useAuth();
+    if (user === null) {
         return <LoginPage />
-    } else if (userType == "client") {
+    } else if (user.type == "client") {
         return <Outlet />
     } else {
         return <HomePage />

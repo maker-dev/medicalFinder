@@ -17,7 +17,7 @@ function CategoriesSection() {
       </div>
       <div className="flex flex-wrap gap-6 items-center justify-center p-7">
         {categories.map((category, index) => {
-          return <CategorieCard key={index} category={category} />;
+          return <CategorieCard key={index} category={category}/>;
         })}
       </div>
       <div className="p-10 flex flex-col items-center">
@@ -31,7 +31,7 @@ function CategoriesSection() {
         <PopularCard text={"Most Popular Products"} button={"Show More +"}/>
         {products.map((product, index) => {
           if (index <=1) {
-            return <ProductCard key={index} product={product}/>;
+            return <ProductCard key={index} product={product} isVertical={true}/>;
           }
           return null;
         })}

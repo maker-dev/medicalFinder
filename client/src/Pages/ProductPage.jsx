@@ -1,31 +1,34 @@
 import React, {useState, useEffect} from 'react'
 import Navbar from "../Components/ui/Navbar";
 import { useParams } from 'react-router-dom';
-import  MedicineImg from '../Assets/Icons/MedicineImg.svg';
-import bell_off from '../Assets/Icons/bell_off.svg';
 import FooterBottom from '../Components/ui/FooterBottom';
 import ReactPaginate from 'react-paginate';
 import api from '../Api/api';
 import PharmacyCard from "../Components/cards/PharmacyCard";
 import ProductCard from '../Components/cards/ProductCard';
+import { useAuth } from '../global/Auth';
 
 function ProductPage() {
   const { id } = useParams();
+  const {coordinates} = useAuth();
   const [product, setProduct] = useState({});
-
-
-  
-
   const [pharmaciesPagination, setPharmaciesPagination] = useState();
   
 
   useEffect(() => {
-    getPharmaciesData();
+    getPharmaciesData(id, coordinates.latitude, coordinates.longitude, 1);
+    getMedicineData(id);
   }, [])
 
-  const getPharmaciesData = async (pageNumber = 1, search = "") => {
+  const getMedicineData = async (id) => {
+    const endPoint = `medicine/${id}`;
+    const response = await api.get(endPoint);
+    setProduct(response.data.data);
+  }
+
+  const getPharmaciesData = async (id, $latitude, $longitude, pageNumber = 1) => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    const endPoint = `pharmacies?page=${pageNumber}`;
+    const endPoint = `medicine/${id}/pharmacies?page=${pageNumber}&user_latitude=${$latitude}&user_longitude=${$longitude}`;
     const response = await api.get(endPoint);
     setPharmaciesPagination(response.data.data);
   }
@@ -34,26 +37,33 @@ function ProductPage() {
     <>
     <Navbar />
     <div className='m-6'>
-    <ProductCard key={product.id} product={product} isVertical={false}/>
+      <div className='md:max-w-5xl w-full mx-auto'>
+        <ProductCard key={product.id} product={product} isVertical={false}/>
+      </div>
+    
     <div className='mt-8'>
         <h1 className="font-bold text-lg">Pharmacies</h1>
         <hr className="bg-secondary w-full h-1 mt-2"/>
     </div>
-    <div className='mt-5'>
-          {pharmaciesPagination && pharmaciesPagination.data.map((pharmacy) => {
-              return (<div className='mt-2' key={pharmacy.id}><PharmacyCard key={pharmacy.id} pharmacy={pharmacy} /></div>);
-            })}
-    </div>
+    {pharmaciesPagination && pharmaciesPagination.data.length > 0 ? (
+        pharmaciesPagination.data.map((pharmacy) => (
+      <div className='mt-2' key={pharmacy.id}>
+        <PharmacyCard key={pharmacy.id} pharmacy={pharmacy} />
+      </div>
+    ))
+  ) : (
+    <div className='font-black text-xl  mt-6 mb-20'>No pharmacies found</div>
+  )}
     
      {/*pagination design*/}
      <div className='mb-5'>
           {
-            (pharmaciesPagination && pharmaciesPagination.total > 5) &&
+            (pharmaciesPagination && pharmaciesPagination.total > 3) &&
             <ReactPaginate
               forcePage={pharmaciesPagination.current_page - 1}
               pageCount={Math.ceil(pharmaciesPagination.total / pharmaciesPagination.per_page)}
               itemsPerPage={pharmaciesPagination.per_page}
-              onPageChange={(pageNumber) => getPharmaciesData(pageNumber.selected + 1)}
+              onPageChange={(pageNumber) => getPharmaciesData(id,coordinates.latitude, coordinates.longitude, pageNumber.selected + 1)}
               pageRangeDisplayed={3}
               marginPagesDisplayed={2}
               containerClassName="flex justify-center mt-8"
