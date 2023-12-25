@@ -36,16 +36,23 @@ function ProductPage() {
     <>
     <Navbar />
     <div className='m-6'>
-    <ProductCard key={product.id} product={product} isVertical={false}/>
+      <div className='md:max-w-5xl w-full mx-auto'>
+        <ProductCard key={product.id} product={product} isVertical={false}/>
+      </div>
+    
     <div className='mt-8'>
         <h1 className="font-bold text-lg">Pharmacies</h1>
         <hr className="bg-secondary w-full h-1 mt-2"/>
     </div>
-    <div className='mt-5'>
-          {pharmaciesPagination && pharmaciesPagination.data.map((pharmacy) => {
-              return (<div className='mt-2' key={pharmacy.id}><PharmacyCard key={pharmacy.id} pharmacy={pharmacy} /></div>);
-            })}
-    </div>
+    {pharmaciesPagination && pharmaciesPagination.data.length > 0 ? (
+        pharmaciesPagination.data.map((pharmacy) => (
+      <div className='mt-2' key={pharmacy.id}>
+        <PharmacyCard key={pharmacy.id} pharmacy={pharmacy} />
+      </div>
+    ))
+  ) : (
+    <div className='font-black text-xl  mt-6 mb-20'>No pharmacies found</div>
+  )}
     
      {/*pagination design*/}
      <div className='mb-5'>

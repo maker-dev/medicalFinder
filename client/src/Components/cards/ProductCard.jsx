@@ -32,16 +32,16 @@ function ProductCard({ product, onClick, isVertical }) {
       </p>
     </div>
   </div>}
-  {!isVertical && <div className="bg-white  max-w  rounded-md overflow-hidden shadow  p-5 " >
+  {!isVertical && <div className="bg-white w-full rounded-md overflow-hidden shadow p-6" >
     <div className="flex justify-between items-center">
-      {isNew ? <div className="bg-main-400 rounded-lg text-white px-4 py-1 w-fit">New</div> 
+      {isNew ? <div className="bg-main-400 rounded-lg text-white md:px-4  px-2 py-1 w-fit">New</div> 
       :
       <div className="text-white px-4 py-2"></div>}
       {
-        <img src={bell_off} alt="product img" className="w-8 cursor-pointer" />
+        <img src={bell_off} alt="product img" className="md:w-8 w-7 cursor-pointer" />
       }
     </div>
-    <div className='flex flex-col sm:flex-row  h-full mt-2 sm:justify-evently w-full sm:space-x-6 '>
+    <div className='flex flex-col sm:flex-row  h-full mt-4 sm:justify-evently w-full sm:space-x-6 '>
   
     <img className=" w-full sm:w-1/3 sm:ml-8 sm:mb-2 md:mb-6 " src={product.image === null ? MedicineImg : MedicineImg} alt="Sunset in the mountains" />
     <div className=" mt-4 sm:mt-0  flex  flex-col  md:space-y-4">
