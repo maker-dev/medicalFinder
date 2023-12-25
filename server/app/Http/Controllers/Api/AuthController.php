@@ -111,10 +111,6 @@ class AuthController extends Controller
 
     }
 
-    public function checkCookie(Request $request) {
-        return $this->success(['exists' => $request->hasCookie("jwt")], "cookies exists !", 200);
-    }
-
     public function user() {
         $user = Auth::user();
         if ($user->type == "client") {

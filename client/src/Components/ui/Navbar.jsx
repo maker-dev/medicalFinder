@@ -75,7 +75,7 @@ function Navbar() {
                         <span className='hidden w-px h-6 bg-gray-300 md:block'></span>
                         <div className='space-y-3 items-center gap-x-6 md:flex md:space-y-0'>
                             {
-                                !(JSON.parse(localStorage.getItem("auth")) ?? true) &&
+                                (JSON.parse(localStorage.getItem("auth")) === false || !localStorage.getItem("auth")) &&
                             <>
                                 <li>
                                     <Link to={"/login"} className='block py-3 text-center text-gray-700 hover:text-main-400 border rounded-lg md:border-none'>
