@@ -45,26 +45,28 @@ function ProductCard({ product, onClick, isVertical }) {
   
     <img className=" w-full sm:w-1/3 sm:ml-8 sm:mb-2 md:mb-6 " src={product.image === null ? MedicineImg : MedicineImg} alt="Sunset in the mountains" />
     <div className=" mt-4 sm:mt-0  flex  flex-col  md:space-y-4">
-      <div className="font-bold text-2xl md:text-3xl ">Title of the product</div>
+      <div className="font-bold text-2xl md:text-3xl ">{product.title}</div>
       <div className='ml-2 flex flex-col sm:space-y-2'>
         <div className=''>
           <h2 className="font-bold text-md md:text-lg ">
             Categories
           </h2>
-          <p className="text-gray-700 text-sm md:text-md"> uiuiy </p>
-        </div>
-        <div>
-          <h2 className="font-bold text-md md:text-lg ">
-            Composition
-          </h2>
-          <p className="text-gray-700 text-sm md:text-md"> uiuiy </p>
+          <p className="text-gray-700 text-sm md:text-md"> {product.category} </p>
         </div>
         <div>
           <h2 className="font-bold text-md md:text-lg ">
             Costumer's Age
           </h2>
-          <p className="text-gray-700 text-sm md:text-md"> uiuiy </p>
+         {product.forAdult === 1 && <p className="text-gray-700 text-sm md:text-md">For adult</p> }
+         {product.forAdult === 0 && <p className="text-gray-700 text-sm md:text-md">For children</p> } 
+          
         </div>
+        <div>
+          <h2 className="font-bold text-md md:text-lg ">
+            Description
+          </h2>
+          <p className="text-gray-700 text-sm md:text-md"> {product.description} </p>
+        </div>  
       
 
       </div>
