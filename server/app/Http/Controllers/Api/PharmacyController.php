@@ -37,11 +37,7 @@ class PharmacyController extends Controller
         return $this->success($pharmacy, null, 200);
     }
 
-    public function destroy($id){
-        $pharmacie=Pharmacy::findOrFail($id);
-        $pharmacie->delete();
-        return $this->success($pharmacie,null,200);
-    }
+
 
     public function store(Request $request)
     {
@@ -49,14 +45,14 @@ class PharmacyController extends Controller
             'name' => 'required'
         ]);
 
-        
+
 
         $pharmacie = Pharmacy::create(['name' => $request->input('name')]);
 
         return $this->success($pharmacie, null, 200);
     }
 
-   
+
 
     public function update(Request $request, $id)
     {
@@ -91,6 +87,11 @@ class PharmacyController extends Controller
         return $this->success($pharmacie, null, 200);
     }
 
-   
+    public function destroy($id){
+        $pharmacie=Pharmacy::findOrFail($id);
+        $pharmacie->delete();
+        return $this->success($pharmacie,null,200);
+    }
+
 
 }

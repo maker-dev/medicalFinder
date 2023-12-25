@@ -58,10 +58,9 @@ class MedicineController extends Controller
 
         return $this->success($medicine,null,200);
     }
-  
 
-    public function update(Request $request, $id)
-{
+
+    public function update(Request $request, $id) {
     $medicine = Medicine::findOrFail($id);
 
 
@@ -103,9 +102,11 @@ class MedicineController extends Controller
         return $this->success($medicine,null,200);
     }
 
-    public function search(Request $request) {
-        $search = $request->input('search');
-        $medicines = Medicine::where('title', 'LIKE', '%' . $search . '%')->get();
-        return $this->success($medicines, null, 200);
+    public function medicinePharmacies($id) {
+
+        $medicine = Medicine::find($id);
+        $pharmacies = $medicine->pharmacies()->paginate(3);
+
+        return $this->success($pharmacies, null, 200);
     }
 }
