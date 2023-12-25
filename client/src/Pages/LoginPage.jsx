@@ -13,7 +13,7 @@ import { useAuth } from '../global/Auth.js';
 function LoginPage() {
 
   const navigate = useNavigate();
-  const {setUser, setUserType} = useAuth();
+  const {setUser} = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -38,7 +38,7 @@ function LoginPage() {
       setValidateCredentials(response.data.message);
     } else if (response.status === 200) {
       setUser(response.data.data.user);
-      setUserType(response.data.data.userType);
+      window.localStorage.setItem("auth", JSON.stringify(true));
       successAlt("logged in !")
       navigate("/");
 

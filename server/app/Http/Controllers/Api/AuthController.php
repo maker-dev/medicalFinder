@@ -103,8 +103,9 @@ class AuthController extends Controller
 
         $cookie = cookie("jwt", $token, 7 * 24 * 60); // 1 week
 
+        $userInfo->type = $user->type;
+
         return $this->success([
-            'userType' => $user->type,
             'user'  => $userInfo
         ], "Login successfully.", 200)->withCookie($cookie);
 
@@ -124,8 +125,9 @@ class AuthController extends Controller
             $userInfo = Admin::find($user->id);
         }
 
+        $userInfo->type = $user->type;
+
         return $this->success([
-            'userType' => $user->type,
             'user' => $userInfo
         ], "Data received successfully.", 200);
     }

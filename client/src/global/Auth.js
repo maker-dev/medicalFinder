@@ -6,36 +6,26 @@ const AuthContext = createContext();
 
 function Auth({children}) {
   const [user, setUser] = useState(null);
-  const [userType, setUserType] = useState(null);
 
   useEffect(() => {
-    checkCookie().then(res => {
-      if (res) {
-        fetchUser();
-      }
-    })
+    if (JSON.parse(localStorage.getItem("auth"))) {
+      fetchUser();
+    }
   }, []);
-
-  const checkCookie = async () => {
-    const response = await api.get("checkCookie");
-    return response.data.data.exists;
-  }
 
   const fetchUser = async () => {
     try {
       const response = await api.get("user")
       setUser(response.data.data.user);
-      setUserType(response.data.data.userType);
     } catch (error) {
+      localStorage.setItem("auth", JSON.stringify(false));
       console.error('Error fetching user:', error);
     }
   };
 
   const values = {
     user,
-    userType,
-    setUser,
-    setUserType
+    setUser
   };
 
   return (

@@ -10,15 +10,15 @@ function Navbar() {
 
     const [state, setState] = useState(false);
     const navigate = useNavigate();
-    const {userType, setUser, setUserType} = useAuth();
+    const {setUser} = useAuth();
     const [loading, setLoading] = useState(false);
 
     const logOut = async () => {
         setLoading(true);
         await api.post("logout");
         setUser(null);
-        setUserType(null);
         setLoading(false);
+        window.localStorage.setItem("auth", JSON.stringify(false));
         errAlt("logged out !");
         navigate("/");
     }
@@ -75,7 +75,7 @@ function Navbar() {
                         <span className='hidden w-px h-6 bg-gray-300 md:block'></span>
                         <div className='space-y-3 items-center gap-x-6 md:flex md:space-y-0'>
                             {
-                                !userType &&
+                                !(JSON.parse(localStorage.getItem("auth")) ?? true) &&
                             <>
                                 <li>
                                     <Link to={"/login"} className='block py-3 text-center text-gray-700 hover:text-main-400 border rounded-lg md:border-none'>
@@ -90,7 +90,7 @@ function Navbar() {
                             </>
                             }
                             {
-                                userType && 
+                                (JSON.parse(localStorage.getItem("auth"))) && 
                                 <li>
                                     <button onClick={logOut} className='block py-3 px-4 font-medium text-center text-white bg-gray-900 hover:bg-red-600 active:bg-red-600 active:shadow-none rounded-lg shadow md:inline'>
                                         LogOut
