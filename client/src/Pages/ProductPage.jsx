@@ -14,9 +14,9 @@ function ProductPage() {
   const {coordinates} = useAuth();
   const [product, setProduct] = useState({});
   const [pharmaciesPagination, setPharmaciesPagination] = useState();
-  const coord1 = { lat: 37.7749, lon: -122.4194 };  // User coordinates
+  const coord1 = { lat: coordinates.latitude, lon: coordinates.longitude};  // User coordinates
   
-
+  
   useEffect(() => {
     getPharmaciesData(id, coordinates.latitude, coordinates.longitude, 1);
     getMedicineData(id);
@@ -50,7 +50,7 @@ function ProductPage() {
     {pharmaciesPagination && pharmaciesPagination.data.length > 0 ? (
         pharmaciesPagination.data.map((pharmacy) => (
       <div className='mt-2' key={pharmacy.id}>
-        <PharmacyCard key={pharmacy.id} pharmacy={pharmacy} distance={Disatnce(coord1,{ lat: pharmacy.location.latitude, lon: pharmacy.location.latitude })}/>
+        <PharmacyCard key={pharmacy.id} pharmacy={pharmacy} distance={Disatnce(coord1,{ lat: pharmacy.location.latitude, lon: pharmacy.location.longitude })}/>
       </div>
     ))
   ) : (

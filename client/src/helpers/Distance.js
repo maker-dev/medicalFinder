@@ -16,8 +16,14 @@ function Distance(coord1, coord2) {
 
     // Calculate the distance in kilometers
     const distance = R * c;
+    let  disObject = {};
+    if(distance < 1){
+        disObject = {value:(distance*1000).toFixed(2), unity:"Meters" };
+    }else{
+        disObject = {value:distance.toFixed(2), unity:"Kilometers" };
+    }
 
-    return distance;
+    return disObject;
 }
 
 export default Distance;

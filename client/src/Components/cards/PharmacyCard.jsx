@@ -6,8 +6,8 @@ export default function PharmacyCard( {pharmacy, distance} ) {
     <div id="card" className=" w-full ">
       <div className=" w-full flex flex-col bg-white">
 
-        { distance && <div className="p-3 pr-5 font-black text-gray-400 text-end">
-          <p>{distance.toFixed(2)} Kilometers</p> 
+        { distance && !isNaN(distance.value) && <div className="p-3 pr-5">
+           <p className="font-black text-gray-500 text-end">{distance.value +" "+distance.unity}</p>
         </div>
         }
         <div
