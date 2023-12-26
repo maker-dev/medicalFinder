@@ -14,8 +14,8 @@ function Distance(coord1, coord2) {
     // Earth radius in kilometers
     const R = 6371;
 
-    // Calculate the distance in meters
-    const distance = R * c * 1000;
+    // Calculate the distance in kilometers
+    const distance = R * c;
 
     return distance;
 }

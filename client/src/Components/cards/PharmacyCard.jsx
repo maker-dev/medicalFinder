@@ -1,13 +1,18 @@
 import phaIcDefault from "../../Assets/Icons/PharmacyImg.svg";
 import FormatAmPm from '../../helpers/FormatAmPm.js';
 
-export default function PharmacyCard( {pharmacy} ) {
+export default function PharmacyCard( {pharmacy, distance} ) {
   return (
     <div id="card" className=" w-full ">
-      <div className=" w-full flex flex-col">
+      <div className=" w-full flex flex-col bg-white">
+
+        { distance && <div className="p-3 pr-5 font-black text-gray-400 text-end">
+          <p>{distance.toFixed(2)} Kilometers</p> 
+        </div>
+        }
         <div
-          className="flex flex-col md:flex-row overflow-hidden bg-white rounded-lg ">
-          <div className=" md:w-1/2 m-6 ">
+          className="flex flex-col md:flex-row overflow-hidden  rounded-lg ">
+          <div className=" md:w-1/2 m-4 ">
             <img
               className="inset-0 h-full w-full object-cover object-center"
               src={pharmacy.image === null ? phaIcDefault : phaIcDefault}

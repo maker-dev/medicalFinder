@@ -7,12 +7,14 @@ import api from '../Api/api';
 import PharmacyCard from "../Components/cards/PharmacyCard";
 import ProductCard from '../Components/cards/ProductCard';
 import { useAuth } from '../global/Auth';
+import Disatnce from '../helpers/Distance';
 
 function ProductPage() {
   const { id } = useParams();
   const {coordinates} = useAuth();
   const [product, setProduct] = useState({});
   const [pharmaciesPagination, setPharmaciesPagination] = useState();
+  const coord1 = { lat: 37.7749, lon: -122.4194 };  // User coordinates
   
 
   useEffect(() => {
@@ -48,7 +50,7 @@ function ProductPage() {
     {pharmaciesPagination && pharmaciesPagination.data.length > 0 ? (
         pharmaciesPagination.data.map((pharmacy) => (
       <div className='mt-2' key={pharmacy.id}>
-        <PharmacyCard key={pharmacy.id} pharmacy={pharmacy} />
+        <PharmacyCard key={pharmacy.id} pharmacy={pharmacy} distance={Disatnce(coord1,{ lat: pharmacy.location.latitude, lon: pharmacy.location.latitude })}/>
       </div>
     ))
   ) : (
