@@ -1,9 +1,17 @@
 import phaIcDefault from "../../Assets/Icons/PharmacyImg.svg";
 import FormatAmPm from '../../helpers/FormatAmPm.js';
+import { useNavigate } from 'react-router-dom';
 
 export default function PharmacyCard( {pharmacy, distance} ) {
+
+  const navigate = useNavigate();
+  const toPharmacyPage = (pharmcyId) => {
+
+    navigate(`/pharmacy/${pharmcyId}`);
+  }
+
   return (
-    <div id="card" className=" w-full ">
+    <div id="card"  onClick={()=>toPharmacyPage(pharmacy.id)} className=" w-full hover:shadow-lg cursor-pointer ">
       <div className=" w-full flex flex-col bg-white">
 
         { distance && !isNaN(distance.value) && <div className="p-3 pr-5">

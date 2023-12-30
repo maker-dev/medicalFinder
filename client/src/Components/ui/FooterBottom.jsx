@@ -3,7 +3,7 @@ import logo from "../../Assets/Icons/Logo.svg";
 
 function FooterBottom() {
   return (
-    <div className="bg-main-400 pt-20">
+    <div className="bg-main-400 pt-20 ">
       <div className="grid grid-cols-12 gap-6 px-5 space-y-8 lg:px-0 lg:space-y-0">
         <div className="hidden lg:block lg:col-span-1"></div>
         <div className="col-span-12 lg:col-span-4">
