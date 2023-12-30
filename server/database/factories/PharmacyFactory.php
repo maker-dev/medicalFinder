@@ -20,6 +20,7 @@ class PharmacyFactory extends Factory
     {
         return [
                 'name' => fake()->name(),
+                'email' => fake()->email(),
                 'description' => fake()->sentences(5, true),
                 'opening_time' => fake()->time(),
                 'closing_time' => fake()->time(),

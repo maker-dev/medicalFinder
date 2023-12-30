@@ -13,7 +13,8 @@ class Client extends Model
 
     protected $fillable = [
         'firstName',
-        'lastName'
+        'lastName',
+        'email'
     ];
 
     public function ratings() {

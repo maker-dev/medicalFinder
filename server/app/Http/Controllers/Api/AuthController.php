@@ -36,7 +36,8 @@ class AuthController extends Controller
 
             $user = Client::create([
                 "firstName" => $request->input("firstName"),
-                "lastName" => $request->input("lastName")
+                "lastName" => $request->input("lastName"),
+                "email" => $request->input("email")
             ]);
 
         } else if ($userType == "pharmacy") {
@@ -52,7 +53,8 @@ class AuthController extends Controller
             }
 
             $user = Pharmacy::create([
-                "name" => $request->input("name")
+                "name" => $request->input("name"),
+                "email" => $request->input("email")
             ]);
 
         } else {

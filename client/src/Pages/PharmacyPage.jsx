@@ -1,21 +1,57 @@
 import FooterBottom from '../Components/ui/FooterBottom';
 import Navbar from "../Components/ui/Navbar";
 import phaIcDefault from "../Assets/Icons/PharmacyImg.svg";
+import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import api from '../Api/api';
+import FormatAmPm from '../helpers/FormatAmPm.js';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import L from 'leaflet';
+import locationIcon from '../Assets/Icons/location.png'
+import {FaStar} from 'react-icons/fa'
 
+export default function PharmacyPage() {
 
+    const { id } = useParams();
+    const [pharmacy, setPharmacy] = useState({});
 
-export default function PharmacyPage(){
+    useEffect(() => {
+        getPharmacyData(id);
+    }, [])
+
+    const getPharmacyData = async (id) => {
+        const endPoint = `pharmacies/${id}`;
+        const response = await api.get(endPoint);       
+        setPharmacy(response.data.data);
+    }
+    
+    const myIcon = new L.Icon({
+        iconUrl: locationIcon,
+        iconSize: [32, 32],      // size of the icon
+        iconAnchor: [16, 32],    // point of the icon which will correspond to marker's location
+        popupAnchor: [0, -32],   // point from which the popup should open relative to the iconAnchor
+    });      
     return(
         <>
             <Navbar /> 
                 <div className='m-6 bg-white  p-6  flex flex-col '>
-                    <div className=''>
-                        stars
+                    <div className="flex mb-2">
+                        {
+                            pharmacy.ratings ? 
+                            Array.from({ length: 5 }, (_, index) => (
+                                Math.round(pharmacy.ratings) >= index + 1 
+                                ?
+                                <FaStar key={index} size={25} fill='#0074cc' />
+                                :
+                                <FaStar key={index} size={25} fill='#e4e5e9' />
+                            ))
+                            : <span style={{color: "#0074cc"}} className="font-bold">No Ratings Yet</span>
+                        }
                     </div>
                     
                     <div className='mt-1'>
-                        <h1 className='font-black lg:text-2xl text-xl '>Pharmacy Title Here{}</h1>
-                        <p className='font-black text-sm text-gray-500 mt-4 '>Operating Hours: 7AM{}</p>
+                        <h1 className='font-black lg:text-2xl text-xl '>{pharmacy.name}</h1>
+                        <p className='font-black text-sm text-gray-500 mt-4 '>Operating Hours: {FormatAmPm(pharmacy.opening_time)}-{FormatAmPm(pharmacy.closing_time)}</p>
                     </div>
                     <div className=" md:w-1/2 my-10 mx-auto  ">
                      <img
@@ -26,7 +62,7 @@ export default function PharmacyPage(){
                     </div>
                     <div className='my-3'>
                         <h1 className='font-black lg:text-2xl text-xl '>PHARMACY OVERVIEW</h1>
-                        <p className='mt-6 '>Description Here {} Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet cumque sed beatae alias assumenda, repellendus, fuga quidem excepturi quam amet dolore ratione nisi facere accusamus sit sunt soluta nemo fugit!</p>
+                        <p className='mt-6 '>{pharmacy.description}</p>
                     </div>
                     <div className="rounded-md overflow-auto border border-gray-400 mt-10">
                             <table className="w-full">
@@ -42,7 +78,7 @@ export default function PharmacyPage(){
 
                                             <div className="mt-4 md:mt-0 md:ml-4">
                                                 <p className="text-gray-600 text-sm text-center font-medium md:text-left">Phone Number</p>
-                                                <p className="text-gray-600 text-sm text-center font-medium md:text-left">+212764378298</p>
+                                                <p className="text-gray-600 text-sm text-center font-medium md:text-left">{pharmacy.phone}</p>
                                             </div>
                                             </div>
                                             
@@ -59,7 +95,7 @@ export default function PharmacyPage(){
 
                                             <div className="mt-4 md:mt-0 md:ml-4">
                                                 <p className="text-gray-600 text-sm  text-center font-medium md:text-left">Permanance Capability</p>
-                                                <p className="text-gray-600 text-sm  text-center font-medium md:text-left">Active</p>
+                                                <p className="text-gray-600 text-sm  text-center font-medium md:text-left">{pharmacy.permanence ? "active" : "not active"}</p>
                                             </div>
                                             </div>
                                             
@@ -78,7 +114,7 @@ export default function PharmacyPage(){
 
                                             <div className="mt-4 md:mt-0 md:ml-4">
                                                 <p className="text-gray-600 text-sm font-medium text-center md:text-left">Google Map Location </p>
-                                                <p className="text-gray-600 text-sm font-medium text-center md:text-left" ><a className='text-red-700 underline font-bold hover:text-green-700' href={`https://www.google.com/maps/place/32%C2%B038'22.2%22N+4%C2%B022'27.7%22W/@32.639504,-4.3769239,17z/data=!3m1!4b1!4m4!3m3!8m2!3d32.639504!4d-4.374349?entry=ttu`} target='_blank'>Location link</a></p>
+                                                <p className="text-gray-600 text-sm font-medium text-center md:text-left" ><a className='text-red-700 underline font-bold hover:text-green-700' href={pharmacy.location ? `https://www.google.com/maps?q=${pharmacy.location.latitude},${pharmacy.location.longitude}` : "#"} target='_blank'>Location link</a></p>
                                             </div>
                                             </div>
                                             
@@ -94,7 +130,7 @@ export default function PharmacyPage(){
 
                                             <div className="mt-4 md:mt-0 md:ml-4">
                                                 <p className="text-gray-600 text-sm text-center font-medium md:text-left">Contact E-mail</p>
-                                                <p className="text-gray-600 text-sm text-center font-medium md:text-left">patmacy.mail@gmail.com</p>
+                                                <p className="text-gray-600 text-sm text-center font-medium md:text-left">{pharmacy.email}</p>
                                             </div>
                                             </div>
                                             
@@ -105,9 +141,23 @@ export default function PharmacyPage(){
                             </table>
                     </div> 
                     <div className='mt-12'>
-                        <h1 className='font-black lg:text-2xl text-xl '>PHARMACY LOCATION</h1>
+                        <h1 className='font-black lg:text-2xl text-xl my-3'>PHARMACY LOCATION</h1>
                         <div>
-                            card map design 
+                            {
+                            pharmacy.location &&
+                            <MapContainer center={[pharmacy.location.latitude, pharmacy.location.longitude]} zoom={13} style={{ height: '500px', width: '100%' }}>
+                            <TileLayer
+                                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                                />
+                                <Marker position={[pharmacy.location.latitude, pharmacy.location.longitude]} icon={myIcon}>
+                                    <Popup>
+                                        A pretty CSS3 popup. <br /> Easily customizable.
+                                    </Popup>
+                                </Marker>
+                            </MapContainer>
+                            }
+
                         </div>
                     </div>
                 </div>

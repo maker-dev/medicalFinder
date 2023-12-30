@@ -23,14 +23,14 @@ function ProductPage() {
   }, [])
 
   const getMedicineData = async (id) => {
-    const endPoint = `medicine/${id}`;
+    const endPoint = `medicines/${id}`;
     const response = await api.get(endPoint);
     setProduct(response.data.data);
   }
 
   const getPharmaciesData = async (id, $latitude, $longitude, pageNumber = 1) => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    const endPoint = `medicine/${id}/pharmacies?page=${pageNumber}&user_latitude=${$latitude}&user_longitude=${$longitude}`;
+    const endPoint = `medicines/${id}/pharmacies?page=${pageNumber}&user_latitude=${$latitude}&user_longitude=${$longitude}`;
     const response = await api.get(endPoint);
     setPharmaciesPagination(response.data.data);
   }
