@@ -111,7 +111,10 @@ class MedicineController extends Controller
 
         // Retrieve paginated pharmacies associated with the medicine
         $pharmacies = $medicine->pharmacies()
-            ->selectRaw('*, (6371 * acos(cos(radians(?)) * cos(radians(location->>"$.latitude")) * cos(radians(location->>"$.longitude") - radians(?)) + sin(radians(?)) * sin(radians(location->>"$.latitude")))) AS distance')
+            ->select([
+                '*',
+                \DB::raw('(6371 * acos(cos(radians(?)) * cos(radians(JSON_EXTRACT(location, "$.latitude"))) * cos(radians(JSON_EXTRACT(location, "$.longitude")) - radians(?)) + sin(radians(?)) * sin(radians(JSON_EXTRACT(location, "$.latitude"))))) AS distance'),
+            ])
             ->orderBy('distance')
             ->addBinding($userLatitude, 'select')
             ->addBinding($userLongitude, 'select')

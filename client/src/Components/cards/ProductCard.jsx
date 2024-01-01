@@ -28,7 +28,9 @@ function ProductCard({ product, onClick, isVertical }) {
     <div className="px-6 py-4">
       <div className="font-bold text-xl mb-2 text-center">{product.title}</div>
       <p className="text-gray-700 text-base text-center">
-        {product.description}
+        {
+          product.description.length > 100 ? product.description.substring(0, 100) + "..." : product.description
+        }
       </p>
     </div>
   </div>}

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('pharmacies', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('email')->unique();
             $table->text("description")->nullable();
             $table->time('opening_time')->nullable();
             $table->time('closing_time')->nullable();

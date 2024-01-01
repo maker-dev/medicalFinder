@@ -1,13 +1,26 @@
 import phaIcDefault from "../../Assets/Icons/PharmacyImg.svg";
 import FormatAmPm from '../../helpers/FormatAmPm.js';
+import { useNavigate } from 'react-router-dom';
 
-export default function PharmacyCard( {pharmacy} ) {
+export default function PharmacyCard( {pharmacy, distance} ) {
+
+  const navigate = useNavigate();
+  const toPharmacyPage = (pharmcyId) => {
+
+    navigate(`/pharmacy/${pharmcyId}`);
+  }
+
   return (
-    <div id="card" className=" w-full ">
-      <div className=" w-full flex flex-col">
+    <div id="card"  onClick={()=>toPharmacyPage(pharmacy.id)} className=" w-full hover:shadow-lg cursor-pointer ">
+      <div className=" w-full flex flex-col bg-white">
+
+        { distance && !isNaN(distance.value) && <div className="p-3 pr-5">
+           <p className="font-black text-gray-500 text-end">{distance.value +" "+distance.unity}</p>
+        </div>
+        }
         <div
-          className="flex flex-col md:flex-row overflow-hidden bg-white rounded-lg ">
-          <div className=" md:w-1/2 m-6 ">
+          className="flex flex-col md:flex-row overflow-hidden  rounded-lg ">
+          <div className=" md:w-1/2 m-4 ">
             <img
               className="inset-0 h-full w-full object-cover object-center"
               src={pharmacy.image === null ? phaIcDefault : phaIcDefault}

@@ -34,11 +34,11 @@ Route::delete('/inscriptionRequest/{id}',[InscriptionRequestController::class,"d
 
 
 Route::get("/medicines", [MedicineController::class, "index"]);
-Route::get("/medicine/{id}", [MedicineController::class, "show"]);
+Route::get("/medicines/{id}", [MedicineController::class, "show"]);
 Route::post('/medicines', [MedicineController::class, 'store']);
-Route::put('/medicine/{id}', [MedicineController::class, 'update']);
+Route::put('/medicines/{id}', [MedicineController::class, 'update']);
 Route::delete('/medicines/{id}', [MedicineController::class, 'destroy']);
-Route::get("/medicine/{id}/pharmacies", [MedicineController::class, "medicinePharmacies"]);
+Route::get("/medicines/{id}/pharmacies", [MedicineController::class, "medicinePharmacies"]);
 
 Route::post("/register", [AuthController::class, "register"]);
 Route::post("/login", [AuthController::class, "login"]);

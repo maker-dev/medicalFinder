@@ -14,6 +14,8 @@ import ProductPage from "./Pages/ProductPage.jsx";
 import AdminRoutes from "./protectedRoutes/AdminRoutes.js";
 import GuestRoutes from './protectedRoutes/GuestRoutes';
 import 'react-toastify/dist/ReactToastify.css';
+import 'leaflet/dist/leaflet.css';  
+import PharmacyPage from "./Pages/PharmacyPage.jsx";
 
 function App() {
   const { pathname } = useLocation();
@@ -37,7 +39,8 @@ function App() {
           <Route element={<AdminRoutes />}>
             <Route path="/dashboard" element={<AdminDashboard />} />
           </Route>
-          { <Route path="/product/:id" element={<ProductPage /*product={product}*/ />} /> }
+          <Route path="/product/:id" element={<ProductPage />} />
+          <Route path="/pharmacy/:id" element={<PharmacyPage />} /> 
           <Route path="*" element={<ErrorPage/>} />
         </Routes>
         <ToastContainer />
