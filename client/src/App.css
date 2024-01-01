@@ -1,3 +1,13 @@
 * {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
+}
+.bg {
+  background: rgb(208, 202, 51);
+  background: linear-gradient(
+    302deg,
+    rgba(208, 202, 51, 1) 0%,
+    rgba(255, 255, 255, 1) 40%,
+    rgba(255, 255, 255, 1) 60%,
+    rgba(208, 202, 51, 1) 100%
+  );
 }
