@@ -39,19 +39,20 @@ export default function PharmacyCard( {pharmacy, distance} ) {
               <p className="font-semibold text-sm text-slate-500 leading-tight truncate">
                 <span className="text-inherit">Operating Hours : </span>{FormatAmPm(pharmacy.opening_time)} - {FormatAmPm(pharmacy.closing_time)}
               </p>
-              <p className="font-bold text-sm leading-tight truncate">
-                <span className="text-inherit">Rating : </span>{pharmacy.ratings ? `${pharmacy.ratings} / 5` : "no ratings yet" }
-              </p>
               { pharmacy.price &&
-                <p className="font-bold text-sm leading-tight truncate">
+                <p className="font-semibold text-sm text-slate-500 leading-tight truncate">
                   <span className="text-inherit">Price : {pharmacy.price} MAD</span>
                 </p>
               }
               { pharmacy.quantity &&
-                <p className="font-bold text-sm leading-tight truncate">
+                <p className="font-semibold text-sm text-slate-500 leading-tight truncate">
                   <span className="text-inherit">Quantity : {pharmacy.quantity} </span>
                 </p>
               }
+              <p className="font-bold text-sm leading-tight truncate">
+                <span className="text-inherit">Rating : </span>{pharmacy.ratings ? `${pharmacy.ratings} / 5` : "no ratings yet" }
+              </p>
+              
             </div>
 
             <p className="text-sm lg:mb-20 my-6">
