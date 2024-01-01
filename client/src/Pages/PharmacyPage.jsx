@@ -56,7 +56,7 @@ export default function PharmacyPage() {
                     <div className=" md:w-1/2 my-10 mx-auto  ">
                      <img
                         className="inset-0 h-full w-full object-cover object-center"
-                        src={phaIcDefault}
+                        src={pharmacy.image === null ? phaIcDefault : phaIcDefault}
                          alt="pharmacy image"
                          />
                     </div>
