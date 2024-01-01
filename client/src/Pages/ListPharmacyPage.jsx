@@ -8,7 +8,7 @@ import SubscribeBar from "../Components/ui/SubscribeBar";
 import PopularCard from "../Components/cards/PopularCard";
 import api from '../Api/api';
 import ReactPaginate from 'react-paginate';
-
+import { useNavigate } from "react-router-dom";
 
 function ListPharmacyPage() {
 
@@ -31,7 +31,13 @@ function ListPharmacyPage() {
     setPharmaciesPagination(response.data.data);
   }
 
+  const navigate = useNavigate();
 
+  const handlePharmacyClick = (pharmacyId) => {
+    // Navigate to the product details page
+    
+    navigate(`/pharmacy/${pharmacyId}`);
+  };
   return (
     <>
       <Navbar />
@@ -46,7 +52,7 @@ function ListPharmacyPage() {
             <SubscribeBar />
             
             {pharmaciesPagination && pharmaciesPagination.data.map((pharmacy) => {
-              return <PharmacyCard key={pharmacy.id} pharmacy={pharmacy} />;
+              return <PharmacyCard key={pharmacy.id} pharmacy={pharmacy} onClick={()=>handlePharmacyClick(pharmacy.id)}/>;
             })}
 
             {/*"pagination design"*/}

@@ -13,6 +13,7 @@ import prodIc_4 from './prod4.svg'
 import prodIc_5 from './prod5.svg'
 import prodIc_6 from './prod6.svg'
 import phaIcDefault from './PharmacyImg.svg'
+import pill2Ic from './Pill2.svg'
 //the importation here
 const aIcons = {
   // ecoIcon:ecoIcon,
@@ -22,6 +23,7 @@ const aIcons = {
   shieldIc: shieldIc,
   pillsIc :pillsIc,
   pillIc :pillIc,
+  pill2Ic :pill2Ic,
   winterIc :winterIc,
   cleanIc :cleanIc,
   aidIc :aidIc,

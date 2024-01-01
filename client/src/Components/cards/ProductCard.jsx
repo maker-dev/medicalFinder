@@ -1,6 +1,7 @@
 import React from "react";
 import bell_off from '../../Assets/Icons/bell_off.svg';
 // import bell_on from '../../Assets/Icons/bell_on.svg';
+import aIcons from "../../Assets/Icons";
 import  MedicineImg from '../../Assets/Icons/MedicineImg.svg';
 import IsProductNew from '../../helpers/IsProductNew';
 
@@ -23,7 +24,7 @@ function ProductCard({ product, onClick, isVertical }) {
       }
     </div>
     <div className="flex justify-center p-4">
-      <img className="w-2/3" src={product.image === null ? MedicineImg : MedicineImg} alt="Sunset in the mountains" />
+      <img className="w-2/4 p-2" src={product.image === null ? aIcons.pill2Ic : aIcons.pill2Ic} alt="Sunset in the mountains" />
     </div>
     <div className="px-6 py-4">
       <div className="font-bold text-xl mb-2 text-center">{product.title}</div>

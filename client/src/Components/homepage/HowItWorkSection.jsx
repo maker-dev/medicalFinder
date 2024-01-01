@@ -7,7 +7,7 @@ function HowItWorkSection() {
       className="w-full h-full flex flex-col justify-center items-center p-10"
       style={{ backgroundImage: `url(${backgroundImage})` }}
     >
-      <div className="bg bg-white p-20 flex flex-col gap-28 xs:w-10/12">
+      <div className="bg bg-white p-20 flex flex-col gap-28 xs:w-10/12 rounded-lg">
         <div className="flex flex-col md:flex-row items-center justify-around gap-10">
           <div className="w-full text-6xl font-bold">How it Works ?</div>
           <div>
