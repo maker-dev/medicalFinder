@@ -24,7 +24,7 @@ function ProductCard({ product, onClick, isVertical }) {
       }
     </div>
     <div className="flex justify-center p-4">
-      <img className="w-2/4 p-2" src={product.image === null ? aIcons.pill2Ic : aIcons.pill2Ic} alt="Sunset in the mountains" />
+      <img className="w-2/4 p-2" src={product.image === null ? aIcons.pill2Ic : product.imgUrl} alt="Sunset in the mountains" />
     </div>
     <div className="px-6 py-4">
       <div className="font-bold text-xl mb-2 text-center">{product.title}</div>
@@ -46,7 +46,7 @@ function ProductCard({ product, onClick, isVertical }) {
     </div>
     <div className='flex flex-col gap-8 justify-center items-center sm:flex-row  h-full mt-4 sm:justify-evently w-full sm:space-x-6'>
   
-    <img className=" w-2/4 p-4 sm:w-1/4" src={product.image === null ? aIcons.pill2Ic : aIcons.pill2Ic} alt="Sunset in the mountains" />
+    <img className=" w-2/4 p-4 sm:w-1/4" src={product.image === null ? aIcons.pill2Ic : product.imgUrl} alt="Sunset in the mountains" />
     <div className=" mt-4 sm:mt-0  flex  flex-col  md:space-y-4">
       <div className="font-bold text-2xl md:text-3xl ">{product.title}</div>
       <div className='ml-2 flex flex-col sm:space-y-2'>

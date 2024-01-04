@@ -14,7 +14,12 @@ function ListPharmacyPage() {
 
   const [pharmaciesPagination, setPharmaciesPagination] = useState();
   const [search, setSearch] = useState("");
-
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+  });
+  }
   useEffect(() => {
     getPharmaciesData();
   }, [])
@@ -46,7 +51,7 @@ function ListPharmacyPage() {
         <div className="  my-4 gap-4 grid   grid-cols-12">
           <div className="lg:col-start-1 lg:col-span-3 col-span-12 flex flex-col items-center gap-5 ">
             <SideBarCard search={search} setSearch={setSearch} onSearchClick={onSearchClick}/>
-            <PopularCard text={"GET DAILY UPDATE"} button={"SUBSCRIBE"} />
+            <PopularCard text={"GET DAILY UPDATE"} button={"SUBSCRIBE"} handleClick={scrollToTop}/>
           </div>
           <div className="  col-span-12  lg:col-span-9 flex flex-col gap-4 ">
             <SubscribeBar />
