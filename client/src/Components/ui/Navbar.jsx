@@ -30,7 +30,7 @@ function Navbar() {
     ];
   return (
     <>
-    <nav className="border-b w-full fixed top-0 bg-gray-50 md:text-sm md:border-none z-50 bg-opacity-95">
+    <nav className="border-b w-full fixed top-0 bg-gray-50 md:text-sm md:border-none z-999 bg-opacity-95">
         <div className="items-center px-4 max-w-screen-xl mx-auto md:flex md:px-8">
                 <div className="flex items-center justify-between py-3 md:py-5 md:block">
                     <Link to="/">

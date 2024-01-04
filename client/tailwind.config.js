@@ -3,6 +3,9 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      zIndex: {
+        '999': 999
+      },
       colors: {
         "secondary": "#1e1e1e",
         "main": {

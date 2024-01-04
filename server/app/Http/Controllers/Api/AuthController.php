@@ -115,13 +115,12 @@ class AuthController extends Controller
 
     public function user() {
         $user = Auth::user();
-
         if ($user->type == "client") {
-            $userInfo = Client::find($user->id);
+            $userInfo = Client::find($user->user_id);
         } else if ($user->type == "pharmacy") {
-            $userInfo = Pharmacy::find($user->id);
+            $userInfo = Pharmacy::find($user->user_id);
         } else if ($user->type == "admin") {
-            $userInfo = Admin::find($user->id);
+            $userInfo = Admin::find($user->user_id);
         }
 
         $userInfo->type = $user->type;
