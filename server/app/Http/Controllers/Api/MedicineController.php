@@ -121,6 +121,10 @@ class MedicineController extends Controller
             ->addBinding($userLatitude, 'select')
             ->paginate(3);
 
+        $pharmacies->each(function ($pharmacy) {
+            $pharmacy->ratings = $pharmacy->averageRating();
+        });
+
         // Return a success response with the paginated pharmacies data
         return $this->success($pharmacies, null, 200);
     }
